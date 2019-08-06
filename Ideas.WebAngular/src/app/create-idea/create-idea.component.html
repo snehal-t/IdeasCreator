@@ -1,0 +1,76 @@
+<section id="CreateIdea" class="section green">
+  <div class="container">
+    <h4>Create Idea</h4>
+    <p>
+      All fields are mandatory
+    </p>
+    <div class="row">
+      <div class="span12">
+        <div class="cform" id="contact-form">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" autocomplete="off" class="contactForm">
+            <div class="row">
+              <div class="span6">
+                <div class="field your-name form-group">
+                  <select id="category" data-msg="Please select category">
+                    <option>Select Category</option>
+                    <option>Idea</option>
+                    <option>POC</option>
+                  </select>
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-name form-group">
+                  <select id="category" data-msg="Please select source">
+                    <option>Select Source</option>
+                    <option>Internal</option>
+                    <option>External</option>
+                  </select>
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-name form-group">
+                  <input type="text" name="name" class="form-control" id="ideaTitle" placeholder="Idea Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field message form-group">
+                  <textarea class="form-control" name="ideaBrief" rows="5" data-rule="required" data-msg="Please provide brief about your idea" placeholder="About your idea"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="field message form-group">
+                  <textarea class="form-control" name="ideaBusinessCase" rows="5" data-rule="required" data-msg="Please provide business case" placeholder="Provide business case"></textarea>
+                  <div class="validation"></div>
+                </div>
+
+              </div>
+              <div class="span6">
+                <div class="field your-name form-group">
+                  <select id="idealTime" data-msg="Please select ideal time">
+                    <option>Select Ideal Time</option>
+                    <option>Less than 2 weeks</option>
+                    <option>Less than 4 weeks</option>
+                    <option>Less than 8 weeks</option>
+                  </select>
+                  <div class="validation"></div>
+                </div>
+                <div class="field message form-group">
+                  <textarea class="form-control" name="idealTimeJustification" rows="5" data-rule="required" data-msg="Please provide justification for less than 2 weeks" placeholder="Less than 2 weeks justification"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-email form-group">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field subject form-group">
+                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number" data-rule="phone" data-msg="Please enter your mobile number" />
+                  <div class="validation"></div>
+                </div>
+                <input type="submit" value="Submit Idea" class="btn btn-theme pull-left">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ./span12 -->
+    </div>
+  </div>
+</section>
