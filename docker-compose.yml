@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ideas.api:
+    image: ${DOCKER_REGISTRY-}ideasapi
+    build:
+      context: .
+      dockerfile: Ideas.API\Dockerfile
