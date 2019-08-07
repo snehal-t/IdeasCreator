@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "06188bf1043b73dc16fc9d12fe1319d2b58d0f7a"
+    "signature": "c2f1dffb24335cffcf7b3e7750aab11a74a5e809"
   },
   "compilationOptions": {
     "defines": [
@@ -25,7 +25,9 @@
       "Ideas.API/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
+          "Microsoft.AspNetCore.Authentication.AzureAD.UI": "2.2.0",
           "Microsoft.AspNetCore.Authentication.AzureADB2C.UI": "2.2.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.0.2105168"
@@ -35,6 +37,28 @@
         },
         "compile": {
           "Ideas.API.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.AzureAD.UI/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.2.0",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "2.2.0",
+          "Microsoft.AspNetCore.Mvc": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.AzureAD.UI.Views.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          },
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.AzureAD.UI.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.AzureAD.UI.Views.dll": {},
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.AzureAD.UI.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.AzureADB2C.UI/2.2.0": {
@@ -3251,6 +3275,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.AzureAD.UI/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KkrLb+8u/07jKu49klWUsy+H2Cn1iUA+4zVPcAQ2WeTItmCG2qkv7rUCUj/2syaleIzuZPcwF5ouR4l7CVzM6A==",
+      "path": "microsoft.aspnetcore.authentication.azuread.ui/2.2.0",
+      "hashPath": "microsoft.aspnetcore.authentication.azuread.ui.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.AzureADB2C.UI/2.2.0": {
       "type": "package",

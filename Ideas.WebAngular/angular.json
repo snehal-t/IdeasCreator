@@ -29,17 +29,17 @@
               "src/assets/css/default.css"
             ],
             "scripts": [
-              //"src/assets/js/jquery.js",
-              //"src/assets/js/jquery.scrollTo.js",
-              //"src/assets/js/jquery.nav.js",
-              //"src/assets/js/jquery.localScroll.js",
-              //"src/assets/js/bootstrap.js",
-              //"src/assets/js/jquery.prettyPhoto.js",
-              //"src/assets/js/isotope.js",
-              //"src/assets/js/jquery.flexslider.js",
-              //"src/assets/js/inview.js",
-              //"src/assets/js/animate.js",
-              //"src/assets/js/custom.js"
+              "src/assets/js/jquery.js",
+              "src/assets/js/jquery.scrollTo.js",
+              "src/assets/js/jquery.nav.js",
+              "src/assets/js/jquery.localScroll.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/jquery.prettyPhoto.js",
+              "src/assets/js/isotope.js",
+              "src/assets/js/jquery.flexslider.js",
+              "src/assets/js/inview.js",
+              "src/assets/js/animate.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
