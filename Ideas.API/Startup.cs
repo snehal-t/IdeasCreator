@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Logging;
+using Ideas.Services.Services;
+using Ideas.Data.Repositories.Ideas;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Ideas.API
 {
@@ -28,10 +24,18 @@ namespace Ideas.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IdentityModelEventSource.ShowPII = true;
-
+            //AzureADAuth
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+
+            //Inject IDBConnection
+            services.AddTransient<IDbConnection>((sp) =>
+            new SqlConnection(this.Configuration.GetConnectionString("appDbConnection")));
+
+            //Dependency injection for services and repositories
+            services.AddScoped<IIdeas, Ideas.Services.Services.Imp.Ideas>();
+            services.AddScoped<IIdeasRepository, Ideas.Data.Repositories.Ideas.Imp.IdeasRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

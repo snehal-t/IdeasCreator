@@ -49,6 +49,7 @@
                     <option>Less than 2 weeks</option>
                     <option>Less than 4 weeks</option>
                     <option>Less than 8 weeks</option>
+                    <option>Open</option>
                   </select>
                   <div class="validation"></div>
                 </div>
@@ -57,14 +58,18 @@
                   <div class="validation"></div>
                 </div>
                 <div class="field your-email form-group">
-                  <input type="text" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="text" class="form-control" name="email" id="contactName" placeholder="Contact Name" data-rule="required" data-msg="Please enter a valid name" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-email form-group">
+                  <input type="text" class="form-control" name="email" id="contactEmail" placeholder="Contact Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validation"></div>
                 </div>
                 <div class="field subject form-group">
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number" data-rule="phone" data-msg="Please enter your mobile number" />
+                  <input type="text" class="form-control" name="mobile" id="contactNumber" placeholder="Conact Number" data-rule="phone" data-msg="Please enter your mobile number" />
                   <div class="validation"></div>
                 </div>
-                <input type="submit" value="Submit Idea" class="btn btn-theme pull-left">
+                <input type="button" value="Submit Idea" class="btn btn-theme pull-left">
               </div>
             </div>
           </form>

@@ -1,0 +1,14 @@
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\Ideas.Test.deps.json
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\Ideas.Test.runtimeconfig.json
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\Ideas.Test.runtimeconfig.dev.json
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\Ideas.Test.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\bin\Debug\netcoreapp2.2\Ideas.Test.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.csprojAssemblyReference.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.csproj.CoreCompileInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.AssemblyInfoInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.AssemblyInfo.cs
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.Test\obj\Debug\netcoreapp2.2\Ideas.Test.pdb

@@ -7,26 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ideas.API", "Ideas.API\Idea
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{72474185-BD6B-43E5-89E7-AD0D25F99AE5}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ideas.WebAngular", "Ideas.WebAngular\", "{D1C80083-0109-45D2-83C5-A77A06819159}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_64753"
-		Debug.AspNetCompiler.PhysicalPath = "Ideas.WebAngular\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64753\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_64753"
-		Release.AspNetCompiler.PhysicalPath = "Ideas.WebAngular\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64753\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "64753"
-		SlnRelativePath = "Ideas.WebAngular\"
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BCCB9E5C-560B-4E03-8016-C45BC2CE3025}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C2BDBFFE-EBF5-4F83-A54B-2C1278EDA87F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ideas.Test", "Ideas.Test\Ideas.Test.csproj", "{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ideas.Data", "Core\Ideas.Data\Ideas.Data.csproj", "{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ideas.Models", "Core\Ideas.Models\Ideas.Models.csproj", "{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ideas.Services", "Core\Ideas.Services\Ideas.Services.csproj", "{94AFCEF0-888F-4513-B523-DB05FD00F131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,13 +33,31 @@ Global
 		{72474185-BD6B-43E5-89E7-AD0D25F99AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72474185-BD6B-43E5-89E7-AD0D25F99AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72474185-BD6B-43E5-89E7-AD0D25F99AE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1C80083-0109-45D2-83C5-A77A06819159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1C80083-0109-45D2-83C5-A77A06819159}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1C80083-0109-45D2-83C5-A77A06819159}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1C80083-0109-45D2-83C5-A77A06819159}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94AFCEF0-888F-4513-B523-DB05FD00F131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94AFCEF0-888F-4513-B523-DB05FD00F131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94AFCEF0-888F-4513-B523-DB05FD00F131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94AFCEF0-888F-4513-B523-DB05FD00F131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F481794-E4AC-4401-BF58-EBDB3ADE4BB5} = {C2BDBFFE-EBF5-4F83-A54B-2C1278EDA87F}
+		{4CE86B30-1BF5-45A8-B408-91AD7B38C7A4} = {BCCB9E5C-560B-4E03-8016-C45BC2CE3025}
+		{26D68CB1-53A4-4B0E-BB9B-3FEE701A5CDB} = {BCCB9E5C-560B-4E03-8016-C45BC2CE3025}
+		{94AFCEF0-888F-4513-B523-DB05FD00F131} = {BCCB9E5C-560B-4E03-8016-C45BC2CE3025}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0CDA933-CC75-4274-8421-E34B3071CE1E}

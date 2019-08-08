@@ -3134,7 +3134,7 @@
           "ref/netstandard1.3/System.Console.dll": {}
         }
       },
-      "System.Data.SqlClient/4.6.0": {
+      "System.Data.SqlClient/4.6.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.5.0",
@@ -4478,6 +4478,44 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "Ideas.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Ideas.Models": "1.0.0",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Ideas.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ideas.Data.dll": {}
+        }
+      },
+      "Ideas.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Ideas.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ideas.Models.dll": {}
+        }
+      },
+      "Ideas.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Ideas.Data": "1.0.0",
+          "Ideas.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Ideas.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ideas.Services.dll": {}
         }
       }
     }
@@ -8216,10 +8254,10 @@
         "system.console.nuspec"
       ]
     },
-    "System.Data.SqlClient/4.6.0": {
-      "sha512": "DLhg881ETdy/OmlbBCjfXGVU2Xlm9x5yHwhcl33SAfCIG05hAbgMcvHUZruIG1sBJolGzDhes7R7hAKPS1SOqw==",
+    "System.Data.SqlClient/4.6.1": {
+      "sha512": "u980l3uFvJ3N/Hin95Po9wn3zzKMvogu/ZnrOZWM/lsMjEatFPXWbxN+coTMeEFUewsopy5xOP8rZD5oXcAZkA==",
       "type": "package",
-      "path": "system.data.sqlclient/4.6.0",
+      "path": "system.data.sqlclient/4.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8284,7 +8322,7 @@
         "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
-        "system.data.sqlclient.4.6.0.nupkg.sha512",
+        "system.data.sqlclient.4.6.1.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -12166,10 +12204,28 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Ideas.Data/1.0.0": {
+      "type": "project",
+      "path": "../Core/Ideas.Data/Ideas.Data.csproj",
+      "msbuildProject": "../Core/Ideas.Data/Ideas.Data.csproj"
+    },
+    "Ideas.Models/1.0.0": {
+      "type": "project",
+      "path": "../Core/Ideas.Models/Ideas.Models.csproj",
+      "msbuildProject": "../Core/Ideas.Models/Ideas.Models.csproj"
+    },
+    "Ideas.Services/1.0.0": {
+      "type": "project",
+      "path": "../Core/Ideas.Services/Ideas.Services.csproj",
+      "msbuildProject": "../Core/Ideas.Services/Ideas.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Ideas.Data >= 1.0.0",
+      "Ideas.Models >= 1.0.0",
+      "Ideas.Services >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.AzureAD.UI >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.AzureADB2C.UI >= 2.2.0",
@@ -12208,7 +12264,17 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Data\\Ideas.Data.csproj": {
+              "projectPath": "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Data\\Ideas.Data.csproj"
+            },
+            "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Models\\Ideas.Models.csproj": {
+              "projectPath": "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Models\\Ideas.Models.csproj"
+            },
+            "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Services\\Ideas.Services.csproj": {
+              "projectPath": "D:\\quinnox one drive\\OneDrive - Quinnox Consultancy Services Ltd\\Projects\\IdeasCreator\\Source\\IdeasApp\\Core\\Ideas.Services\\Ideas.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
