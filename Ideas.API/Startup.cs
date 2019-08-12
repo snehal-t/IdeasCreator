@@ -24,9 +24,15 @@ namespace Ideas.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //BotAuth
+            var msAppIdKey = Configuration.GetSection("MicrosoftAppId")?.Value;
+            var msAppPwdKey = Configuration.GetSection("MicrosoftAppPassword")?.Value;
             //AzureADAuth
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+                //.AddBotAuthentication();
+           
 
             //Inject IDBConnection
             services.AddTransient<IDbConnection>((sp) =>

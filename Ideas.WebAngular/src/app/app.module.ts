@@ -11,6 +11,7 @@ import { MyIdeasComponent } from './my-ideas/my-ideas.component';
 import { OpenIdeasComponent } from './open-ideas/open-ideas.component';
 import { ApprovedIdeasComponent } from './approved-ideas/approved-ideas.component';
 import { RejectedIdeasComponent } from './rejected-ideas/rejected-ideas.component';
+import { IdeaListItemComponent } from './idea-list-item/idea-list-item.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RejectedIdeasComponent } from './rejected-ideas/rejected-ideas.componen
     MyIdeasComponent,
     OpenIdeasComponent,
     ApprovedIdeasComponent,
-    RejectedIdeasComponent
+    RejectedIdeasComponent,
+    IdeaListItemComponent
   ],
   imports: [
     BrowserModule,

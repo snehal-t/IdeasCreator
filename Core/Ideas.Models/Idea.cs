@@ -6,8 +6,9 @@ namespace Ideas.Models
 {
     public class Idea : User
     {
-        public Guid IdeaId { get; set; }
+        public string IdeaId { get; set; }
         public string Type { get; set; }
+        public string IdeaName { get; set; }
         public string Title { get; set; }
         public string Source { get; set; }
         public string Description { get; set; }
@@ -20,8 +21,9 @@ namespace Ideas.Models
         public string IdeaStatus { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public List<User> Watchers { get; set; }
-        public User Moderator { get; set; }
-        public User Picker { get; set; }
+        public int WatchCount { get; set; }
+        public int CommentCount { get; set; }
+        public string Moderator { get; set; }
+        public string Picker { get; set; }
     }
 }

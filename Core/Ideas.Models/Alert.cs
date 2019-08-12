@@ -8,8 +8,10 @@ namespace Ideas.Models
     {
         public string AlertId { get; set; }
         public string IdeaId { get; set; }
+        public string IdeaName { get; set; }
         public string AlertType { get; set; }
         public string AlertDescription { get; set; }
-        public User AlertTo { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public bool AlertFlag { get; set; }
     }
 }
