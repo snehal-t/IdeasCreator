@@ -13,7 +13,7 @@ namespace Ideas.Models
         public string Source { get; set; }
         public string Description { get; set; }
         public string BusinessCase { get; set; }
-        public DateTime IdealTime { get; set; }
+        public string IdealTime { get; set; }
         public string BusinessJustification { get; set; }
         public string ContactName { get; set; }
         public string ContactEmail { get; set; }

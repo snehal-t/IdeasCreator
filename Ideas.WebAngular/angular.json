@@ -39,7 +39,8 @@
               "src/assets/js/jquery.flexslider.js",
               "src/assets/js/inview.js",
               "src/assets/js/animate.js",
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+              "src/assets/js/font-awesome.js"
             ]
           },
           "configurations": {

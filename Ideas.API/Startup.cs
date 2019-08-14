@@ -9,6 +9,7 @@ using Ideas.Services.Services;
 using Ideas.Data.Repositories.Ideas;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 
 namespace Ideas.API
 {
@@ -20,10 +21,15 @@ namespace Ideas.API
         }
 
         public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //CORS
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             //BotAuth
             var msAppIdKey = Configuration.GetSection("MicrosoftAppId")?.Value;
@@ -58,6 +64,7 @@ namespace Ideas.API
                 app.UseHsts();
             }
 
+            app.UseCors();
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();

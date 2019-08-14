@@ -7,69 +7,92 @@
     <div class="row">
       <div class="span12">
         <div class="cform" id="contact-form">
-          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="sendmessage">Your idea has been submitted successfully. Thank you!</div>
           <div id="errormessage"></div>
-          <form action="" method="post" role="form" autocomplete="off" class="contactForm">
+          <form [formGroup]="ideaForm" (ngSubmit)="onSubmit()" class="contactForm">
             <div class="row">
               <div class="span6">
                 <div class="field your-name form-group">
-                  <select id="category" data-msg="Please select category">
-                    <option>Select Category</option>
-                    <option>Idea</option>
-                    <option>POC</option>
+                  <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                    <option value="">Select Category</option>
+                    <option value="Idea">Idea</option>
+                    <option value="POC">POC</option>
                   </select>
-                  <div class="validation"></div>
+                  <div *ngIf="submitted && f.category.errors" class="validation">
+                    <div *ngIf="f.category.errors.required">Category is required</div>
+                  </div>
                 </div>
                 <div class="field your-name form-group">
-                  <select id="category" data-msg="Please select source">
-                    <option>Select Source</option>
-                    <option>Internal</option>
-                    <option>External</option>
+                  <select formControlName="source" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.source.errors }">
+                    <option value="">Select Source</option>
+                    <option value="Internal">Internal</option>
+                    <option value="External">External</option>
                   </select>
-                  <div class="validation"></div>
+                  <div *ngIf="submitted && f.source.errors" class="validation">
+                    <div *ngIf="f.source.errors.required">Source is required</div>
+                  </div>
                 </div>
                 <div class="field your-name form-group">
-                  <input type="text" name="name" class="form-control" id="ideaTitle" placeholder="Idea Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
+                  <input type="text" placeholder="Title" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                  <div *ngIf="submitted && f.title.errors" class="validation">
+                    <div *ngIf="f.title.errors.required">Title is required</div>
+                  </div>
                 </div>
                 <div class="field message form-group">
-                  <textarea class="form-control" name="ideaBrief" rows="5" data-rule="required" data-msg="Please provide brief about your idea" placeholder="About your idea"></textarea>
-                  <div class="validation"></div>
+                  <textarea placeholder="Brief your idea" formControlName="brief" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brief.errors }"></textarea>
+                  <div *ngIf="submitted && f.brief.errors" class="validation">
+                    <div *ngIf="f.brief.errors.required">Brief is required</div>
+                  </div>
                 </div>
                 <div class="field message form-group">
-                  <textarea class="form-control" name="ideaBusinessCase" rows="5" data-rule="required" data-msg="Please provide business case" placeholder="Provide business case"></textarea>
-                  <div class="validation"></div>
+                  <textarea placeholder="Provide business case" formControlName="businessCase" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.businessCase.errors }" ></textarea>
+                  <div *ngIf="submitted && f.businessCase.errors" class="validation">
+                    <div *ngIf="f.businessCase.errors.required">Business case is required</div>
+                  </div>
                 </div>
 
               </div>
               <div class="span6">
                 <div class="field your-name form-group">
-                  <select id="idealTime" data-msg="Please select ideal time">
-                    <option>Select Ideal Time</option>
-                    <option>Less than 2 weeks</option>
-                    <option>Less than 4 weeks</option>
-                    <option>Less than 8 weeks</option>
-                    <option>Open</option>
+                  <select formControlName="idealTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idealTime.errors }">
+                    <option value="">Select Ideal Time</option>
+                    <option value="Less than 2 weeks">Less than 2 weeks</option>
+                    <option value="Less than 4 weeks">Less than 4 weeks</option>
+                    <option value="Less than 8 weeks">Less than 8 weeks</option>
+                    <option value="Open">Open</option>
                   </select>
-                  <div class="validation"></div>
+                  <div *ngIf="submitted && f.idealTime.errors" class="validation">
+                    <div *ngIf="f.idealTime.errors.required">Ideal time is required</div>
+                  </div>
                 </div>
                 <div class="field message form-group">
-                  <textarea class="form-control" name="idealTimeJustification" rows="5" data-rule="required" data-msg="Please provide justification for less than 2 weeks" placeholder="Less than 2 weeks justification"></textarea>
-                  <div class="validation"></div>
+                  <textarea placeholder="Less than 2 weeks justification" formControlName="idealTimeJustification" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idealTimeJustification.errors }"></textarea>
+                  <div *ngIf="submitted && f.idealTimeJustification.errors" class="validation">
+                    <div *ngIf="f.idealTimeJustification.errors.justificationValidator">Less than 2 weeks justification is required</div>
+                  </div>
                 </div>
                 <div class="field your-email form-group">
-                  <input type="text" class="form-control" name="email" id="contactName" placeholder="Contact Name" data-rule="required" data-msg="Please enter a valid name" />
-                  <div class="validation"></div>
+                  <input type="text" placeholder="Contact Name" formControlName="contactName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactName.errors }" />
+                  <div *ngIf="submitted && f.contactName.errors" class="validation">
+                    <div *ngIf="f.contactName.errors.required">Contact name is required</div>
+                  </div>
                 </div>
                 <div class="field your-email form-group">
-                  <input type="text" class="form-control" name="email" id="contactEmail" placeholder="Contact Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
+                  <input type="text" placeholder="Contact Email" formControlName="contactEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactEmail.errors }" />
+                  <div *ngIf="submitted && f.contactEmail.errors" class="validation">
+                    <div *ngIf="f.contactEmail.errors.required">Contact email is required</div>
+                    <div *ngIf="f.contactEmail.errors.email">Enter valid contact email</div>
+                  </div>
                 </div>
                 <div class="field subject form-group">
-                  <input type="text" class="form-control" name="mobile" id="contactNumber" placeholder="Conact Number" data-rule="phone" data-msg="Please enter your mobile number" />
-                  <div class="validation"></div>
+                  <input type="text" placeholder="Contact Number" formControlName="contactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }" />
+                  <div *ngIf="submitted && f.contactNumber.errors" class="validation">
+                    <div *ngIf="f.contactNumber.errors.required">Contact number is required</div>
+                    <div *ngIf="f.contactNumber.errors.pattern">Enter valid contact number</div>
+                  </div>
                 </div>
-                <input type="button" value="Submit Idea" class="btn btn-theme pull-left">
+                <button class="btn btn-theme pull-left"><i class='fas fa-file'></i> Create Idea</button>
+                <button class="btn btn-theme pull-left" type="reset" (click)="onReset()">Reset</button>
               </div>
             </div>
           </form>

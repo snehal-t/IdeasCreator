@@ -19,3 +19,5 @@ D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasC
 D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.API\obj\Debug\netcoreapp2.2\Ideas.API.csproj.CopyComplete
 D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.API\obj\Debug\netcoreapp2.2\Ideas.API.dll
 D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.API\obj\Debug\netcoreapp2.2\Ideas.API.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.API\bin\Debug\netcoreapp2.2\Ideas.Common.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Ideas.API\bin\Debug\netcoreapp2.2\Ideas.Common.pdb

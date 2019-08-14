@@ -7,21 +7,25 @@ namespace Ideas.Services.Services
 {
     public interface IIdeas
     {
-        bool CreateIdea(Idea idea);
-        bool UpdateIdea(Idea idea);
-        bool WithDrawIdea(string ideaId, string email, string userComments);
-        bool ApproveIdea(string ideaId, string email, string userComments);
-        bool RejectIdea(String ideaId, string email, string userComments);
-        bool DeligateIdea(String ideaId, User assignee, string userComments);
-        bool PickIdea(string ideaId, string email, string userComments);
-        bool PickIdeaDone(string ideaId, string email, string userComments);
-        bool PickIdeaGiveUp(string ideaId, string email, string userComments);
-        bool PickIdeaRework(string ideaId, string email, string userComments);
-        bool PickIdeaAccept(string ideaId, string email, string userComments);
-        bool WatchIdea(string ideaId, string email);
-        List<Idea> GetIdeas(string email, string IdeaStatus);
-        List<Comment> IdeaComments(string ideaId, string email);
-        List<Alert> GetAlerts(string email);
-        bool PickIdeaReopen(string ideaId, string email, string userComments);
+        SignInResponse SignIn(string name, string email);
+        Response CreateIdea(Idea idea, string email, string author);
+        Response UpdateIdea(Idea idea, string email, string author);
+        Response WithdrawIdea(string ideaId, string email, string author, string userComments);
+        Response ApproveIdea(string ideaId, string email, string author, string userComments);
+        Response RejectIdea(String ideaId, string email, string author, string userComments);
+        Response DeligateIdea(String ideaId, User assignee, string userComments, string email, string author);
+        Response PickIdea(string ideaId, string email, string author, string userComments);
+        Response PickIdeaDone(string ideaId, string email, string author, string userComments);
+        Response PickIdeaGiveUp(string ideaId, string email, string author, string userComments);
+        Response PickIdeaRework(string ideaId, string email, string author, string userComments);
+        Response PickIdeaAccept(string ideaId, string email, string author, string userComments);
+        Response PickIdeaReopen(string ideaId, string email, string author, string userComments);
+        Response WatchIdea(string ideaId, string email, string author, bool isActive);
+        Response CommentIdea(string ideaId, string email, string author, bool commentType, long commentParentId, string userComments);
+        IdeasResponse GetIdeas(string email, string author, string ideaPage, int pageSize, int currentPage, string orderBy, string order);
+        WatchersResponse GetIdeaWatchers(string email, string author, string ideaId);
+        CommentsResponse GetIdeaComments(string ideaId, string email, string author, int pageSize, int currentPage);
+        AlertsResponse GetAlerts(string email, string author, int pageSize, int currentPage);
+        IdeaResponse GetIdeaDetails(string email, string author, string ideaId);
     }
 }

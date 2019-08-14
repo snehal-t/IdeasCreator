@@ -49,6 +49,13 @@ div, article, section, header, footer, nav, li {
   position: relative;
 }
 
+.listIcon i
+{
+  font-size:20px;
+  margin:5px;
+  color:#fff;
+}
+
 .group:after {
   display: block;
   height: 0;
@@ -812,6 +819,14 @@ section.ideaslist p {
   margin: 10px;
 }
 
+div.listItem {
+  border: 5px #455246 solid;
+  
+  /*margin-bottom: 20px;
+  box-shadow: 10px 10px #455246;
+  */
+}
+
 
 section.ideaslist .service-box {
   padding: 20px;
@@ -820,8 +835,9 @@ section.ideaslist .service-box {
   -o-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background: #8fb398;
-  margin-bottom: 30px;
+  background: #728f73;
+  margin: 20px;
+  box-shadow: 10px 10px #455246;
 }
 
 section.ideaslist .span3:hover {
@@ -978,7 +994,6 @@ section#about {
 
 .validation {
   color: red;
-  display: none;
   margin: 0 0 20px;
   font-weight: 400;
   font-size: 13px;

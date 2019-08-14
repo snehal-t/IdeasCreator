@@ -1,8 +1,53 @@
-export class User {
-  public Id: string;
-  public Name: string;
-  public Email: string;
-  public Role: string;
+export class Request {
+  public Author: string;
+  public IdeaId: string;
+  public Assignee: User;
+  public Comments: string;
+  public CommentType: boolean;
+  public CommentParentId: number;
+  public IdeaPage: string;
+  public PageSize: number;
+  public CurrentPage: number;
+  public OrderBy: string;
+  public Order: string;
+  public IsWatching: boolean;
+  public Idea: Idea;
+}
+
+export class Response {
+  public IsSuccess: boolean;
+  public Message: string;
+}
+
+export class SignInResponse extends Response {
+  public Author: string;
+}
+
+export class IdeasResponse extends Response {
+  public Ideas: Idea[];
+}
+
+export class WatchersResponse extends Response {
+  public Watchers: Watcher[];
+}
+
+export class CommentsResponse extends Response {
+  public Comments: Comment[];
+}
+
+export class AlertsResponse extends Response {
+  public Alerts: Alert[];
+}
+
+export class IdeaResponse extends Response {
+  public Idea: Idea;
+}
+
+export class User extends Response {
+  public id: string;
+  public name: string;
+  public email: string;
+  public role: string[];
 }
 
 export class Watcher extends User {

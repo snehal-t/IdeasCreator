@@ -12,6 +12,13 @@ import { OpenIdeasComponent } from './open-ideas/open-ideas.component';
 import { ApprovedIdeasComponent } from './approved-ideas/approved-ideas.component';
 import { RejectedIdeasComponent } from './rejected-ideas/rejected-ideas.component';
 import { IdeaListItemComponent } from './idea-list-item/idea-list-item.component';
+import { AppGlobal } from './config/appglobal';
+import { IdeasapiService } from './services/ideasapi.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { User, SignInResponse, Response, IdeasResponse, WatchersResponse, CommentsResponse, AlertsResponse, IdeaResponse } from './idea';
+import { HttpErrorInterceptor } from './ErrorHandler/http-error-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +35,8 @@ import { IdeaListItemComponent } from './idea-list-item/idea-list-item.component
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     MsAdalAngular6Module.forRoot({
       tenant: '21212548-dd86-4f27-a1fa-faf16eedb7c3',
       clientId: '520e43d8-b87b-457d-8bd6-e5fa53494354',
@@ -39,7 +48,11 @@ import { IdeaListItemComponent } from './idea-list-item/idea-list-item.component
       cacheLocation: 'localStorage',
     })
   ],
-  providers: [AuthenticationGuard],
+  providers: [AuthenticationGuard, AppGlobal, IdeasapiService, User, SignInResponse, Response, IdeasResponse, WatchersResponse, CommentsResponse, AlertsResponse, IdeaResponse,  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
