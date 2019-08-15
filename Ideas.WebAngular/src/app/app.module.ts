@@ -18,7 +18,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { User, SignInResponse, Response, IdeasResponse, WatchersResponse, CommentsResponse, AlertsResponse, IdeaResponse } from './idea';
 import { HttpErrorInterceptor } from './ErrorHandler/http-error-interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr'; 
 
 @NgModule({
   declarations: [
@@ -37,6 +38,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-bottom-right',
+        closeButton: true
+      }
+    ),
     MsAdalAngular6Module.forRoot({
       tenant: '21212548-dd86-4f27-a1fa-faf16eedb7c3',
       clientId: '520e43d8-b87b-457d-8bd6-e5fa53494354',

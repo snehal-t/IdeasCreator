@@ -14,7 +14,7 @@ export class IdeasapiService {
   constructor(private http: HttpClient, private handler: HttpHandler, private appGlobal: AppGlobal) {
     this.headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Authorization', 'bearer ' + this.appGlobal.AccessToken);
+      .set('Authorization', 'bearer ' + sessionStorage.getItem("accessToken"));
   }
 
   SignIn(): Observable<SignInResponse> {
@@ -22,129 +22,93 @@ export class IdeasapiService {
   }
 
   CreateIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.CreateIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.CreateIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   UpdateIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.put<Response>(this.appGlobal.UpdateIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.put<Response>(this.appGlobal.UpdateIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   WithdrawIdea(request: Request, comments: string): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.WithdrawIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.WithdrawIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   ApproveIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.ApproveIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.ApproveIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   RejectIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.RejectIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.RejectIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   DeligateIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.DeligateIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.DeligateIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.PickIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdeaDone(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.PickIdeaDone, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdeaDone, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdeaGiveUp(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.PickIdeaGiveUp, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdeaGiveUp, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdeaAccept(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.PickIdeaAccept, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdeaAccept, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdeaReopen(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.PickIdeaReopen, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdeaReopen, JSON.stringify(request), { headers: this.headers });
   }
 
   WatchIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.WatchIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.WatchIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   CommentIdea(request: Request): Observable<Response> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<Response>(this.appGlobal.CommentIdea, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.CommentIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   GetIdeas(request: Request): Observable<IdeasResponse> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<IdeasResponse>(this.appGlobal.GetIdeas, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<IdeasResponse>(this.appGlobal.GetIdeas, JSON.stringify(request), { headers: this.headers });
   }
 
   GetIdeaWatchers(request: Request): Observable<WatchersResponse> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<WatchersResponse>(this.appGlobal.GetIdeaWatchers, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<WatchersResponse>(this.appGlobal.GetIdeaWatchers, JSON.stringify(request), { headers: this.headers });
   }
 
   GetIdeaComments(request: Request): Observable<CommentsResponse> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<CommentsResponse>(this.appGlobal.GetIdeaComments, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<CommentsResponse>(this.appGlobal.GetIdeaComments, JSON.stringify(request), { headers: this.headers });
   }
 
   GetAlerts(request: Request): Observable<AlertsResponse> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<AlertsResponse>(this.appGlobal.GetIdeaComments, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<AlertsResponse>(this.appGlobal.GetIdeaComments, JSON.stringify(request), { headers: this.headers });
   }
 
   GetIdeaDetails(request: Request): Observable<IdeaResponse> {
-    request.Author = this.appGlobal.Author;
-    let params = new HttpParams()
-      .set("request", JSON.stringify(request))
-    return this.http.post<IdeaResponse>(this.appGlobal.GetIdeaComments, params, { headers: this.headers });
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<IdeaResponse>(this.appGlobal.GetIdeaComments, JSON.stringify(request), { headers: this.headers });
   }
 
 }

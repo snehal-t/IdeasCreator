@@ -11,16 +11,22 @@ import { User, SignInResponse } from './idea';
 })
 export class AppComponent {
   title = 'Ideas Creator';
+  showHtml: boolean = true;
 
   constructor(private adalSvc: MsAdalAngular6Service, private appGlobal: AppGlobal, private apiService: IdeasapiService, private signInReponse: SignInResponse) {
     var token = this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {     
       sessionStorage.setItem("accessToken", token);
       this.apiService.SignIn().subscribe(res => {
         this.signInReponse = res as SignInResponse;
-        if (this.signInReponse.IsSuccess) {
-          sessionStorage.setItem("author", this.signInReponse.Author);
+        if (this.signInReponse.isSuccess) {
+          this.showHtml = true;
+          sessionStorage.setItem("author", this.signInReponse.author);
         }
       });
     });;
+  }
+
+  onLogout() {
+    this.adalSvc.logout();
   }
 }

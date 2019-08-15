@@ -997,6 +997,7 @@ section#about {
   margin: 0 0 20px;
   font-weight: 400;
   font-size: 13px;
+  margin-top:-20px;
 }
 
 #sendmessage {
@@ -1444,6 +1445,7 @@ i.icon-white {
   border: none;
   *border: 0;
   border-bottom-color: none;
+  margin-right:10px;
 }
 
   .btn:link, .btn:visited {

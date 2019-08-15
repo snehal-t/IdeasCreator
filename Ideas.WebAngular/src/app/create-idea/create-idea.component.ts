@@ -4,6 +4,7 @@ import { JustificationValidator } from './ideal-justification-validator';
 import { Idea, Request } from '../idea';
 import { IdeasapiService } from '../services/ideasapi.service';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-create-idea',
@@ -15,10 +16,11 @@ export class CreateIdeaComponent implements OnInit {
   request: Request = new Request();
   ideaForm: FormGroup;
   submitted = false;
-  
-  constructor(private formBuilder: FormBuilder, private ideaService: IdeasapiService) { }
+
+  constructor(private formBuilder: FormBuilder, private ideaService: IdeasapiService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    //Initialize form
     this.ideaForm = this.formBuilder.group({
       category: ['', [Validators.required]],
       source: ['', [Validators.required]],
@@ -44,30 +46,33 @@ export class CreateIdeaComponent implements OnInit {
     }
     const formValue = this.ideaForm.value;
 
-    //Set values in Idea object
-    this.idea.Type = formValue.category;
-    this.idea.Source = formValue.source;
-    this.idea.Title = formValue.title;
-    this.idea.Description = formValue.brief;
-    this.idea.BusinessCase = formValue.businessCase;
-    this.idea.IdealTime = formValue.idealTime;
-    this.idea.BusinessJustification = formValue.idealTimeJustification;
-    this.idea.ContactName = formValue.contactName;
-    this.idea.ContactEmail = formValue.contactEmail;
-    this.idea.ContactMobileNo = formValue.contactNumber;
+    //Form Idea
+    this.idea.type = formValue.category;
+    this.idea.source = formValue.source;
+    this.idea.title = formValue.title;
+    this.idea.ideaName = formValue.title;
+    this.idea.description = formValue.brief;
+    this.idea.businessCase = formValue.businessCase;
+    this.idea.idealTime = formValue.idealTime;
+    this.idea.businessJustification = formValue.idealTimeJustification;
+    this.idea.contactName = formValue.contactName;
+    this.idea.contactEmail = formValue.contactEmail;
+    this.idea.contactMobileNo = formValue.contactNumber;
 
     //Send it in Request
-    this.request.Idea = this.idea;
+    this.request.idea = this.idea;
 
     //Call API
     this.ideaService.CreateIdea(this.request).subscribe(res => {
-      if (res.IsSuccess) {
-        
+      if (res.isSuccess) {
+        this.ideaForm.reset();
+        this.submitted = false;
+        this.toastr.success(res.message, "Success")
+      }
+      else {
+        this.toastr.error(res.message, "Error");
       }
     });
-
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.ideaForm.value, null, 4));
   }
 
   onReset() {

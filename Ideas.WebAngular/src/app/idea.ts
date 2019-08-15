@@ -1,46 +1,46 @@
 export class Request {
-  public Author: string;
-  public IdeaId: string;
-  public Assignee: User;
-  public Comments: string;
-  public CommentType: boolean;
-  public CommentParentId: number;
-  public IdeaPage: string;
-  public PageSize: number;
-  public CurrentPage: number;
-  public OrderBy: string;
-  public Order: string;
-  public IsWatching: boolean;
-  public Idea: Idea;
+  public author: string;
+  public ideaId: string;
+  public assignee: User;
+  public comments: string;
+  public commentType: boolean;
+  public commentParentId: number;
+  public ideaPage: string;
+  public pageSize: number;
+  public currentPage: number;
+  public orderBy: string;
+  public order: string;
+  public isWatching: boolean;
+  public idea: Idea;
 }
 
 export class Response {
-  public IsSuccess: boolean;
-  public Message: string;
+  public isSuccess: boolean;
+  public message: string;
 }
 
 export class SignInResponse extends Response {
-  public Author: string;
+  public author: string;
 }
 
 export class IdeasResponse extends Response {
-  public Ideas: Idea[];
+  public ideas: Idea[];
 }
 
 export class WatchersResponse extends Response {
-  public Watchers: Watcher[];
+  public watchers: Watcher[];
 }
 
 export class CommentsResponse extends Response {
-  public Comments: Comment[];
+  public comments: Comment[];
 }
 
 export class AlertsResponse extends Response {
-  public Alerts: Alert[];
+  public alerts: Alert[];
 }
 
 export class IdeaResponse extends Response {
-  public Idea: Idea;
+  public idea: Idea;
 }
 
 export class User extends Response {
@@ -51,54 +51,54 @@ export class User extends Response {
 }
 
 export class Watcher extends User {
-  public IdeaId: string;
+  public ideaId: string;
 }
 
 export class Alert extends User {
-  public AlertId: string;
-  public IdeaId: string;
-  public IdeaName: string;
-  public AlertType: string;
-  public AlertDescription: string;
-  public CreatedDate: string;
-  public AlertFlag: boolean;
+  public alertId: string;
+  public ideaId: string;
+  public ideaName: string;
+  public alertType: string;
+  public alertDescription: string;
+  public createdDate: string;
+  public alertFlag: boolean;
 }
 
 export class Dashboard {
-  public TotalIdeas: string;
-  public IdeasInAction: string;
-  public IdeasPendingAction: string;
-  public IdeasTrending: string;
-  public MostCommented: Idea;
+  public totalIdeas: string;
+  public ideasInAction: string;
+  public ideasPendingAction: string;
+  public ideasTrending: string;
+  public mostCommented: Idea;
 }
 
 export class Comment extends User {
-  public CommentId: string;
-  public IdeaId: string;
-  public ParentCommentId: string;
-  public CommentDescription: string;
-  public CreatedDate: string;
-  public UpdatedDate: string;
+  public commentId: string;
+  public ideaId: string;
+  public parentCommentId: string;
+  public commentDescription: string;
+  public createdDate: string;
+  public updatedDate: string;
 }
 
 export class Idea extends User {
-  public IdeaId: string;
-  public Type: string;
-  public IdeaName: string;
-  public Title: string;
-  public Source: string;
-  public Description: string;
-  public BusinessCase: string;
-  public IdealTime: string;
-  public BusinessJustification: string;
-  public ContactName: string;
-  public ContactEmail: string;
-  public ContactMobileNo: string;
-  public IdeaStatus: string;
-  public CreatedDate: string;
-  public UpdatedDate: string;
-  public WatchCount: number;
-  public CommentCount: number;
-  public Moderator: string;
-  public Picker: string;
+  public ideaId: string;
+  public type: string;
+  public ideaName: string;
+  public title: string;
+  public source: string;
+  public description: string;
+  public businessCase: string;
+  public idealTime: string;
+  public businessJustification: string;
+  public contactName: string;
+  public contactEmail: string;
+  public contactMobileNo: string;
+  public ideaStatus: string;
+  public createdDate: string;
+  public updatedDate: string;
+  public watchCount: number;
+  public commentCount: number;
+  public moderator: string;
+  public picker: string;
 }

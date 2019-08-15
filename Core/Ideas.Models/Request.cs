@@ -1,5 +1,14 @@
 ﻿namespace Ideas.Models
 {
+    public class BaseRequest
+    {
+        public string Author { get; set; }
+    }
+
+    public class CreateIdeaRequest: BaseRequest
+    {
+        public Idea Idea { get; set; }
+    }
     public class Request
     {
         public string Author { get; set; }

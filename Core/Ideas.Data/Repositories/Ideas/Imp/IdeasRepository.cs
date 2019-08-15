@@ -4,6 +4,7 @@ using System.Data;
 using System.Text;
 using Ideas.Models;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Ideas.Data.Repositories.Ideas.Imp
 {
@@ -794,6 +795,11 @@ namespace Ideas.Data.Repositories.Ideas.Imp
         private InviteeList GetInviteeList(List<User> users)
         {
             InviteeList inviteeList = new InviteeList();
+            if (users.Any())
+            {
+                inviteeList.IsSuccess = users.First().IsSuccess;
+                inviteeList.Message = users.First().Message;
+            }
             List<User> listWatchers = new List<User>();
             List<User> listApprover = new List<User>();
             List<User> listCommenter = new List<User>();

@@ -45,7 +45,7 @@ namespace Ideas.API.Controllers
 
         [Route("api/CreateIdea")]
         [HttpPost]
-        public ActionResult<Response> CreateIdea(Request request)
+        public ActionResult<Response> CreateIdea([FromBody]Request request)
         {
             try
             {

@@ -1,5 +1,5 @@
   <!-- navbar -->
-<div class="navbar-wrapper">
+<div class="navbar-wrapper" *ngIf="showHtml">
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -21,7 +21,7 @@
           </ul>
           <ul id="menu-main" class="nav">
             <li>
-              <a href="" title="Logout"><img height="30" width="30" src="../assets/img/signoff.png" alt="Logout" /></a>
+              <a (click)="onLogout()" title="Logout"><img height="30" width="30" src="../assets/img/signoff.png" alt="Logout" /></a>
             </li>
           </ul>
         </nav>
@@ -29,8 +29,8 @@
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
-<footer>
+<router-outlet *ngIf="showHtml"></router-outlet>
+<footer *ngIf="showHtml">
   <div class="container">
     <div class="row">
       <div class="span6 offset3">

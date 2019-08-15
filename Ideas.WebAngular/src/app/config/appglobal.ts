@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AppGlobal {
   //API Base URL
-  readonly ApiBaseUrl: string = 'https://172.23.233.25/api';
+  readonly ApiBaseUrl: string = 'https://172.23.238.51/api';
 
   //API URL
   readonly SignIn: string = this.ApiBaseUrl + '/SignIn';
@@ -26,15 +26,6 @@ export class AppGlobal {
   readonly GetIdeaComments: string = this.ApiBaseUrl + '/GetIdeaComments';
   readonly GetAlerts: string = this.ApiBaseUrl + '/GetAlerts';
   readonly GetIdeaDetails: string = this.ApiBaseUrl + '/GetIdeaDetails';
-
-  //Get UserId
-  Author: string = sessionStorage.getItem("author");
-
-  //Get User
-  User: string = sessionStorage.getItem("user");
-
-  //Token
-  AccessToken: string = sessionStorage.getItem("accessToken");
 
   //Lazy loading page size
   readonly PageSize: number = 10;
