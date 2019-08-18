@@ -1,1 +1,23 @@
-<p>idea-list-item works!</p>
+<div class="animated-fast flyIn span6">
+  <div class="service-box">
+    <div class="pull-right listIcon">
+      <a title="Edit" *ngIf="isCreator" (click)="parentOpenIdeaAction('Edit')"><i class='fas fa-edit'></i></a>
+      <a title="Withdraw" *ngIf="isCreator" (click)="parentOpenIdeaAction('Withdraw')"><i class='fas fa-trash'></i></a>
+      <a title="Approve" *ngIf="isApprover || isDelegator" (click)="parentOpenIdeaAction('Approve')"><i class='fas fa-check-square'></i></a>
+      <a title="Reject" *ngIf="isApprover || isDelegator" (click)="parentOpenIdeaAction('Reject')"><i class='fas fa-times-circle'></i></a>
+      <a title="Delegate" *ngIf="isApprover || isDelegator" (click)="parentOpenIdeaAction('Delegate')"><i class='fas fa-share'></i></a>
+      <a title="Pick" *ngIf="isPicker" (click)="parentOpenIdeaAction('Pick')"><i class='fas fa-crosshairs'></i></a>
+      <a title="Idea Implemented" *ngIf="isPicker" (click)="parentOpenIdeaAction('PickIdeaDone')"><i class='fas fa-clipboard-check'></i></a>
+      <a title="Give up" *ngIf="isPicker" (click)="parentOpenIdeaAction('PickIdeaGiveup')"><i class='fas fa-undo'></i></a>
+      <a title="Rework on Idea" *ngIf="isCreator" (click)="parentOpenIdeaAction('PickIdeaRework')"><i class='fas fa-retweet'></i></a>
+      <a title="Accept Idea Implemented" *ngIf="isCreator" (click)="parentOpenIdeaAction('PickIdeaAccepted')"><i class='fas fa-edit'></i></a>
+      <a title="Re-open Idea" *ngIf="isApprover || isDelegator" (click)="parentOpenIdeaAction('PickIdeaReopen')"><i class='fas fa-edit'></i></a>
+      <a title="Watch this Idea" (click)="parentOpenIdeaAction('WatchIdea')"><i class='fas fa-eye'></i></a>
+      <a title="Comment" (click)="parentOpenIdeaAction('CommentIdea')"><i class='fas fa-comment-dots'></i></a>
+    </div>
+    <a (click)="parentOpenIdeaDetails()"><h2>{{idea.title}}</h2></a>
+    <p>
+      {{idea.description}}
+    </p>
+  </div>
+</div>

@@ -1,87 +1,198 @@
+<ngx-spinner type="ball-elastic-dots" size="large">
+  Loading
+</ngx-spinner>
+
 <section id="ViewIdeas" class="section orange ideaslist">
   <div class="container">
-    <h4>View Ideas</h4>
-    <!-- Four columns -->
     <div class="row">
-      <div class="animated-fast flyIn span6">
-        
-        <div class="service-box">
-          <div class="pull-right listIcon">
-            <i class='fas fa-file'></i>
-            <i class='fas fa-eye'></i>
-            <i class='fas fa-edit'></i>
-            <i class='fas fa-check-square'></i>
-            <i class='fas fa-times-circle'></i>
-            <i class='fas fas fa-share'></i>
-            <i class='fas fa-clipboard-check'></i>
-            <i class='fas fa-undo'></i>
-            <i class='fas fa-vote-yea'></i>
-            <i class='fas fa-retweet'></i>
-            <i class='fas fa-comment-dots'></i>
-            <i class='fas fas fa-bell'></i>
-          </div>
-          <h2>Web design</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
+      <div class="pull-left"><h4>{{title}}</h4></div>
+      <div class="pull-right span1 sortSelect">
+        <select [(ngModel)]="sortOrder" (change)="OnSortChange()">
+          <option value="ASC">ASC</option>
+          <option value="DESC">DESC</option>
+        </select>
       </div>
-      <div class="animated flyIn span6">
-        <div class="service-box">
-          <h2>Web development</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
+      <div class="pull-right span2 sortSelect">
+        <select [(ngModel)]="orderBy" (change)="OnSortChange()">
+          <option value="CREATED_DATE">Created Date</option>
+          <option value="TITLE">Idea Title</option>
+          <option value="CURRENT_STATUS">Idea Status</option>
+          <option value="CREATOR">Idea Creator</option>
+          <option value="WATCH_COUNT">Idea Watch Count</option>
+          <option value="COMMENT_COUNT">Idea Comment Count</option>
+          <option value="IDEA_TYPE">Idea Type</option>
+        </select>
       </div>
-      <div class="animated-fast flyIn span6">
-        <div class="service-box">
-          <h2>Photography</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
+      <div class="pull-right span1 sortSelect">
+        <span>Sort By:</span>
       </div>
-      <div class="animated-slow flyIn span6">
-        <div class="service-box">
-          <h2>Ecommerce</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
-      </div>
-      <div class="animated-fast flyIn span6">
-        <div class="service-box">
-          <h2>Web design</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
-      </div>
-      <div class="animated flyIn span6">
-        <div class="service-box">
-          <h2>Web development</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
-      </div>
-      <div class="animated-fast flyIn span6">
-        <div class="service-box">
-          <h2>Photography</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
-      </div>
-      <div class="animated-slow flyIn span6">
-        <div class="service-box">
-          <h2>Ecommerce</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </div>
-      </div>
+    </div>
+    <!-- Four columns -->
+    <div class="row" id="infinite-scroller">
+      <app-idea-list-item #appChild (openIdeaAction)="openIdeaAction($event)" (openIdeaDetails)="openIdeaDetails($event)" [idea]="item" [index]="item.ideaId" *ngFor="let item of ideaResponse.ideas;let i = index"></app-idea-list-item>
     </div>
   </div>
 </section>
+
+<div class="modal span12" id="myModal" *ngIf="showDetails">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Idea Details</h4>
+        <button type="button" class="close" (click)="showDetails=false;" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="span5">
+            <div class="form-group">
+              <label>Type</label>
+              <div class="input-group">
+                <span>{{ideaDetails.type}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Source</label>
+              <div class="input-group">
+                <span>{{ideaDetails.source}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <div class="input-group">
+                <span>{{ideaDetails.title}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Brief about Idea</label>
+              <div class="input-group">
+                <span>{{ideaDetails.description}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Business case</label>
+              <div class="input-group">
+                <span>{{ideaDetails.businessCase}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="form-group">
+              <label>Ideal time</label>
+              <div class="input-group">
+                <span>{{ideaDetails.idealTime}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Ideal time justification</label>
+              <div class="input-group">
+                <span>{{ideaDetails.businessJustification}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Contact name</label>
+              <div class="input-group">
+                <span>{{ideaDetails.contactName}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Contact email</label>
+              <div class="input-group">
+                <span>{{ideaDetails.contactEmail}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Contact Number</label>
+              <div class="input-group">
+                <span>{{ideaDetails.contactMobileNo}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span5">
+            <div class="form-group">
+              <label>Ideal status</label>
+              <div class="input-group">
+                <span>{{ideaDetails.ideaStatus}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Watch count</label>
+              <div class="input-group">
+                <span>{{ideaDetails.watchCount}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Comment count</label>
+              <div class="input-group">
+                <span>{{ideaDetails.commentCount}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <!--TODO-->
+        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('Edit')" class="btn btn-danger"><i class='fas fa-edit'></i> Edit</button>
+        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('Withdraw')" class="btn btn-danger"><i class='fas fa-trash'></i> Withdraw</button>
+        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Approve')" class="btn btn-danger"><i class='fas fa-check-square'></i> Approve</button>
+        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Reject')" class="btn btn-danger"><i class='fas fa-times-circle'></i> Reject</button>
+        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Delegate')" class="btn btn-danger"><i class='fas fa-share'></i> Delegate</button>
+        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('Pick')" class="btn btn-danger"><i class='fas fa-crosshairs'></i> Pick</button>
+        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('PickIdeaDone')" class="btn btn-danger"><i class='fas fa-clipboard-check'></i> Idea Implemented</button>
+        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('PickIdeaGiveup')" class="btn btn-danger"><i class='fas fa-undo'></i> Give up</button>
+        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('PickIdeaRework')" class="btn btn-danger"><i class='fas fa-retweet'></i> Rework on Idea</button>
+        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('PickIdeaAccepted')" class="btn btn-danger"><i class='fas fa-edit'></i> Accept Idea Implemented</button>
+        <button type="button" *ngIf="isApprover" (click)="openCommentPopup('PickIdeaReopen')" class="btn btn-danger"><i class='fas fa-edit'></i> Re-open Idea</button>
+        <button type="button" (click)="openCommentPopup('WatchIdea')" class="btn btn-danger"><i class='fas fa-eye'></i> Watch this Idea</button>
+        <button type="button" (click)="openCommentPopup('CommentIdea')" class="btn btn-danger"><i class='fas fa-comment-dots'></i> Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal span12" id="myModal" *ngIf="actionPopup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">{{actionTitle}}</h4>
+          <button type="button" class="close" (click)="showDetails=false;actionPopup=false;">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="span5">
+              <div class="form-group">
+                <label>Idea</label>
+                <div class="input-group">
+                  <span>{{ideaDetails.title}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Comments</label>
+                <div class="input-group">
+                  <textarea placeholder="Put your comments" formControlName="comments" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.comments.errors }"></textarea>
+                  <div *ngIf="submitted && f.comments.errors" class="validation">
+                    <div *ngIf="f.comments.errors.required">Comments is required</div>
+                    <div *ngIf="f.comments.errors.minLength">Comments lenght should be more than 5 characters</div>
+                    <div *ngIf="f.comments.errors.maxLength">Comments length should not be more than 4000 characters</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <!--TODO-->
+          <button class="btn btn-danger">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

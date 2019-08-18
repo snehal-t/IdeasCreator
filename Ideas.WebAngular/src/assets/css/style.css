@@ -49,11 +49,10 @@ div, article, section, header, footer, nav, li {
   position: relative;
 }
 
-.listIcon i
-{
-  font-size:20px;
-  margin:5px;
-  color:#fff;
+.listIcon i {
+  font-size: 20px;
+  margin: 5px;
+  color: #fff;
 }
 
 .group:after {
@@ -93,7 +92,17 @@ body {
   right: 20px;
 }
 
-a.scrollup {
+div.sortSelect {
+  margin-top: 23px;
+}
+
+  div.sortSelect span {
+    color:#fff;
+    font-weight:bold;
+    float:right;
+  }
+
+a .scrollup {
   outline: 0;
   text-decoration: none;
 }
@@ -821,7 +830,6 @@ section.ideaslist p {
 
 div.listItem {
   border: 5px #455246 solid;
-  
   /*margin-bottom: 20px;
   box-shadow: 10px 10px #455246;
   */
@@ -997,7 +1005,7 @@ section#about {
   margin: 0 0 20px;
   font-weight: 400;
   font-size: 13px;
-  margin-top:-20px;
+  margin-top: -20px;
 }
 
 #sendmessage {
@@ -1445,7 +1453,7 @@ i.icon-white {
   border: none;
   *border: 0;
   border-bottom-color: none;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
   .btn:link, .btn:visited {
@@ -1853,4 +1861,12 @@ i.icon-white {
     #contact-form input[type=submit] {
       width: 100%;
     }
+}
+
+.modal{
+  left:5%;
+}
+
+.modal-header .close {
+  margin-top: -50px;
 }

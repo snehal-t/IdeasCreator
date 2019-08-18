@@ -76,12 +76,14 @@ namespace Ideas.Models
 
     public class SignInResponse : Response
     {
-        public SignInResponse(bool isSuccess, string message, string author) : base(isSuccess, message)
+        public SignInResponse(bool isSuccess, string message, string author, string role) : base(isSuccess, message)
         {
             base.IsSuccess = isSuccess;
             base.Message = message;
             Author = author;
+            Role = role;
         }
         public string Author { get; set; }
+        public string Role { get; set; }
     }
 }

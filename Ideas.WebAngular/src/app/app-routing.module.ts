@@ -9,11 +9,12 @@ import { MyIdeasComponent } from './my-ideas/my-ideas.component';
 import { OpenIdeasComponent } from './open-ideas/open-ideas.component';
 import { ApprovedIdeasComponent } from './approved-ideas/approved-ideas.component';
 import { RejectedIdeasComponent } from './rejected-ideas/rejected-ideas.component';
+import { ListIdeasComponent } from './list-ideas/list-ideas.component';
 
 const routes: Routes = [
   { path: 'Dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] },
   { path: 'CreateIdea', component: CreateIdeaComponent, canActivate: [AuthenticationGuard] },
-  { path: 'ViewIdeas', component: ViewIdeasComponent, canActivate: [AuthenticationGuard] },
+  { path: 'ViewIdeas', component: ListIdeasComponent, canActivate: [AuthenticationGuard] },
   { path: 'MyIdeas', component: MyIdeasComponent, canActivate: [AuthenticationGuard] },
   { path: 'OpenIdeas', component: OpenIdeasComponent, canActivate: [AuthenticationGuard] },
   { path: 'ApprovedIdeas', component: ApprovedIdeasComponent, canActivate: [AuthenticationGuard] },

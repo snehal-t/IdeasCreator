@@ -19,11 +19,18 @@ namespace Ideas.Models
         public string ContactEmail { get; set; }
         public string ContactMobileNo { get; set; }
         public string IdeaStatus { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
+        public DateTimeOffset? CreatedDate { get; set; }
+        public DateTimeOffset? UpdatedDate { get; set; }
         public int WatchCount { get; set; }
         public int CommentCount { get; set; }
+        public string ModeratorId { get; set; }
         public string Moderator { get; set; }
+        public string ModeratorEmail { get; set; }
+        public string DelegatorId { get; set; }
+        public string Delegator { get; set; }
+        public string DelegatorEmail { get; set; }
+        public string PickerId { get; set; }
         public string Picker { get; set; }
+        public string PickerEmail { get; set; }
     }
 }

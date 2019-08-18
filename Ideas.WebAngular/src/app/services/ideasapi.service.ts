@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Request, Response, Idea, User, SignInResponse, IdeasResponse, WatchersResponse, CommentsResponse, AlertsResponse, IdeaResponse } from '../idea';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpClientModule } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { AppGlobal } from '../config/appglobal';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class IdeasapiService {
   headers: HttpHeaders = new HttpHeaders();
+
+  triggerChildEvent = new BehaviorSubject<any>("");
+  childEventCallback = this.triggerChildEvent.asObservable();
+  
+  childEventMethod(data: any, action: string) {
+    let modifiedData = {
+      ...data,
+      action: action
+    }
+    this.triggerChildEvent.next(modifiedData);
+  }
 
   constructor(private http: HttpClient, private handler: HttpHandler, private appGlobal: AppGlobal) {
     this.headers = new HttpHeaders()
@@ -31,7 +43,7 @@ export class IdeasapiService {
     return this.http.put<Response>(this.appGlobal.UpdateIdea, JSON.stringify(request), { headers: this.headers });
   }
 
-  WithdrawIdea(request: Request, comments: string): Observable<Response> {
+  WithdrawIdea(request: Request): Observable<Response> {
     request.author = sessionStorage.getItem("author");
     return this.http.post<Response>(this.appGlobal.WithdrawIdea, JSON.stringify(request), { headers: this.headers });
   }
@@ -64,6 +76,11 @@ export class IdeasapiService {
   PickIdeaGiveUp(request: Request): Observable<Response> {
     request.author = sessionStorage.getItem("author");
     return this.http.post<Response>(this.appGlobal.PickIdeaGiveUp, JSON.stringify(request), { headers: this.headers });
+  }
+
+  PickIdeaRework(request: Request): Observable<Response> {
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<Response>(this.appGlobal.PickIdeaRework, JSON.stringify(request), { headers: this.headers });
   }
 
   PickIdeaAccept(request: Request): Observable<Response> {

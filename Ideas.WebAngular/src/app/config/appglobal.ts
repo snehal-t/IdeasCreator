@@ -28,5 +28,17 @@ export class AppGlobal {
   readonly GetIdeaDetails: string = this.ApiBaseUrl + '/GetIdeaDetails';
 
   //Lazy loading page size
-  readonly PageSize: number = 10;
+  readonly PageSize: number = 4;
+
+  readonly viewIdeaTitle: string = "View Ideas";
+  readonly myIdeaTitle: string = "My Ideas";
+  readonly newIdeaTitle: string = "New Ideas";
+  readonly approvedIdeaTitle: string = "Approved Ideas";
+  readonly rejectedIdeaTitle: string = "Rejected Ideas";
+
+  readonly viewIdeaSection: string = "VIEW_IDEAS";
+  readonly myIdeaSection: string = "MY_IDEAS";
+  readonly newIdeaSection: string = "NEW_IDEAS  ";
+  readonly approvedIdeaSection: string = "APPROVED_IDEAS";
+  readonly rejectedIdeaSection: string = "REJECTED_IDEAS";
 }

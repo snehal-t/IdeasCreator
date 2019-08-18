@@ -24,11 +24,11 @@ namespace Ideas.Services.Services.Imp
             User user =  _iIdeaRepository.SignIn(name, email);
             if (user.Id != null)
             {
-                return new SignInResponse(true, "", user.Id);
+                return new SignInResponse(true, "", user.Id, user.Role);
             }
             else
             {
-                return new SignInResponse(true, "User not found", null);
+                return new SignInResponse(true, "User not found", null, null);
             }
         }
 

@@ -39,7 +39,7 @@ namespace Ideas.API.Controllers
             catch (Exception ex)
             {
                 LogError(ex);
-                return new SignInResponse(false, ex.ToString(), null);
+                return new SignInResponse(false, ex.ToString(), null, null);
             }
         }
 

@@ -1,4 +1,5 @@
-  <!-- navbar -->
+
+<!-- navbar -->
 <div class="navbar-wrapper" *ngIf="showHtml">
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -9,15 +10,15 @@
         </a>
         <h1 class="brand"><a routerLink="Dashboard"><img width="120" src="../assets/img/qideas-logo.png" alt="QIdeas" /></a></h1>
         <!-- navigation -->
-        <nav class="pull-right nav-collapse collapse">
+        <nav class="pull-left nav-collapse collapse">
           <ul id="menu-main" class="nav">
             <li><a title="Dashboard" href="#Dashboard" routerLink="Dashboard">Dashboard</a></li>
             <li><a title="Create Idea" href="#CreateIdea" routerLink="CreateIdea">Create Idea</a></li>
             <li><a title="View Ideas" href="#ViewIdeas" routerLink="ViewIdeas">View Ideas</a></li>
             <li><a title="My Ideas" href="#MyIdeas" routerLink="MyIdeas">My Ideas</a></li>
-            <li><a title="New Ideas" href="#OpenIdeas" routerLink="OpenIdeas">New Ideas</a></li>
-            <li><a title="Approved Ideas" href="#ApprovedIdeas" routerLink="ApprovedIdeas">Approved Ideas</a></li>
-            <li><a title="Rejected Ideas" href="#RejectedIdeas" routerLink="RejectedIdeas">Rejected Ideas</a></li>
+            <li><a title="New Ideas" href="#OpenIdeas" *ngIf="IsApprover" routerLink="OpenIdeas">New Ideas</a></li>
+            <li><a title="Approved Ideas" href="#ApprovedIdeas" *ngIf="IsApprover" routerLink="ApprovedIdeas">Approved Ideas</a></li>
+            <li><a title="Rejected Ideas" href="#RejectedIdeas" *ngIf="IsApprover" routerLink="RejectedIdeas">Rejected Ideas</a></li>
           </ul>
           <ul id="menu-main" class="nav">
             <li>

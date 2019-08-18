@@ -17,9 +17,13 @@ import { IdeasapiService } from './services/ideasapi.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { User, SignInResponse, Response, IdeasResponse, WatchersResponse, CommentsResponse, AlertsResponse, IdeaResponse } from './idea';
 import { HttpErrorInterceptor } from './ErrorHandler/http-error-interceptor';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr'; 
+import { ToastrModule } from 'ngx-toastr';
+import { InfiniteScrollerDirective } from './infinite-scroller.directive'; 
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ListIdeasComponent } from './list-ideas/list-ideas.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,14 +35,19 @@ import { ToastrModule } from 'ngx-toastr';
     OpenIdeasComponent,
     ApprovedIdeasComponent,
     RejectedIdeasComponent,
-    IdeaListItemComponent
+    IdeaListItemComponent,
+    InfiniteScrollerDirective,
+    ListIdeasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
+    NgbModule,
     ToastrModule.forRoot(
       {
         positionClass: 'toast-bottom-right',

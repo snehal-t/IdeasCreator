@@ -21,6 +21,7 @@ export class Response {
 
 export class SignInResponse extends Response {
   public author: string;
+  public role: string;
 }
 
 export class IdeasResponse extends Response {
@@ -99,6 +100,15 @@ export class Idea extends User {
   public updatedDate: string;
   public watchCount: number;
   public commentCount: number;
+  public moderatorId: string;
   public moderator: string;
+  public moderatorEmail: string;
+  public delegatorId: string;
+  public delegator: string;
+  public delegatorEmail: string;
+  public pickerId: string;
   public picker: string;
+  public pickerEmail: string;
+  public action?: string;
+  public comments?: string;
 }

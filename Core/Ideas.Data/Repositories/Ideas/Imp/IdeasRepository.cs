@@ -139,7 +139,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Withdraw"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -172,7 +172,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Approve"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -205,7 +205,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Reject"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -238,7 +238,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Delegate"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("DELECATE_APPROVER_EMAIL", assignee.Email));
                 sqlCommand.Parameters.Add(new SqlParameter("DELECATE_APPROVER_NAME", assignee.Name));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
@@ -273,7 +273,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Pick"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -306,7 +306,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Done"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -339,7 +339,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "GiveUp"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -372,7 +372,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Rework"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -405,7 +405,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Accept"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -438,7 +438,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Reopen"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -471,7 +471,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Watch"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("Watch", isActive));
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
@@ -504,7 +504,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", "Comment"));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_DESCRIPTION", userComments));
                 sqlCommand.Parameters.Add(new SqlParameter("COMMENT_PARENT_COMMENT_ID", commentParentId));
                 sqlCommand.Parameters.Add(new SqlParameter("IS_COMMENT_PUBLIC", commentType));
@@ -536,9 +536,10 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 _dbConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand("[QDEA].[QDEASP_GET_IDEA_LIST]", (SqlConnection)_dbConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", ideaPage));
+                sqlCommand.Parameters.Add(new SqlParameter("AUTHORIZATION_ID", author));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaPage", ideaPage));
                 sqlCommand.Parameters.Add(new SqlParameter("Page_Size", pageSize));
                 sqlCommand.Parameters.Add(new SqlParameter("Current_Page", currentPage));
                 sqlCommand.Parameters.Add(new SqlParameter("Order_By", orderBy));
@@ -548,31 +549,40 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 {
                     while (reader.Read())
                     {
-                        try
-                        {
-                            Idea idea = new Idea()
-                            {
-                                Id = reader.IsDBNull(reader.GetOrdinal("Idea_Id")) ? string.Empty : reader.GetString(reader.GetOrdinal("Idea_Id")),
-                                Type = reader.IsDBNull(reader.GetOrdinal("Idea_Type")) ? string.Empty : reader.GetString(reader.GetOrdinal("Idea_Type")),
-                                IdeaName = reader.IsDBNull(reader.GetOrdinal("Idea_Name")) ? string.Empty : reader.GetString(reader.GetOrdinal("Idea_Name")),
-                                Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? string.Empty : reader.GetString(reader.GetOrdinal("Title")),
-                                Name = reader.IsDBNull(reader.GetOrdinal("Creator")) ? string.Empty : reader.GetString(reader.GetOrdinal("Creator")),
-                                Moderator = reader.IsDBNull(reader.GetOrdinal("Approver")) ? string.Empty : reader.GetString(reader.GetOrdinal("Approver")),
-                                Picker = reader.IsDBNull(reader.GetOrdinal("Picker")) ? string.Empty : reader.GetString(reader.GetOrdinal("Picker")),
-                                CreatedDate = reader.IsDBNull(reader.GetOrdinal("Created_Date")) ? null : (DateTime?)reader.GetDateTime(reader.GetOrdinal("Created_Date")),
-                                UpdatedDate = reader.IsDBNull(reader.GetOrdinal("Updated_Date")) ? null : (DateTime?)reader.GetDateTime(reader.GetOrdinal("Updated_Date")),
-                                WatchCount = reader.IsDBNull(reader.GetOrdinal("Watch_Count")) ? 0 : (int)reader.GetInt32(reader.GetOrdinal("Watch_Count")),
-                                CommentCount = reader.IsDBNull(reader.GetOrdinal("Comment_Count")) ? 0 : (int)reader.GetInt32(reader.GetOrdinal("Comment_Count")),
-                                IdeaStatus = reader.IsDBNull(reader.GetOrdinal("Current_Status")) ? string.Empty : reader.GetString(reader.GetOrdinal("Current_Status")),
-                                IsSuccess = reader.IsDBNull(reader.GetOrdinal("IS_SUCCESS")) ? false : reader.GetBoolean(reader.GetOrdinal("IS_SUCCESS")),
-                                Message = reader.IsDBNull(reader.GetOrdinal("DB_MESSAGE")) ? string.Empty : reader.GetString(reader.GetOrdinal("DB_MESSAGE"))
-                            };
-                            ideas.Add(idea);
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
+                        Idea idea = new Idea();
+
+                        idea.IdeaId = reader.IsDBNull(reader.GetOrdinal("Idea_Id")) ? null : reader.GetGuid(reader.GetOrdinal("Idea_Id")).ToString();
+                        idea.Type = reader.IsDBNull(reader.GetOrdinal("Idea_Type")) ? string.Empty : reader.GetString(reader.GetOrdinal("Idea_Type"));
+                        idea.IdeaName = reader.IsDBNull(reader.GetOrdinal("Idea_Name")) ? string.Empty : reader.GetString(reader.GetOrdinal("Idea_Name"));
+                        idea.Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? string.Empty : reader.GetString(reader.GetOrdinal("Title"));
+                        idea.BusinessCase = reader.IsDBNull(reader.GetOrdinal("BUSINESS_CASE")) ? string.Empty : reader.GetString(reader.GetOrdinal("BUSINESS_CASE"));
+                        idea.Description = reader.IsDBNull(reader.GetOrdinal("IDEA_DESCRIPTION")) ? string.Empty : reader.GetString(reader.GetOrdinal("IDEA_DESCRIPTION"));
+                        idea.IdealTime = reader.IsDBNull(reader.GetOrdinal("ETA")) ? string.Empty : reader.GetString(reader.GetOrdinal("ETA"));
+                        idea.BusinessJustification = reader.IsDBNull(reader.GetOrdinal("ETA_JUSTIFICATION")) ? string.Empty : reader.GetString(reader.GetOrdinal("ETA_JUSTIFICATION"));
+                        idea.ContactName = reader.IsDBNull(reader.GetOrdinal("CONTACT_PERSON")) ? string.Empty : reader.GetString(reader.GetOrdinal("CONTACT_PERSON"));
+                        idea.ContactMobileNo = reader.IsDBNull(reader.GetOrdinal("CONTACT_NUMBER")) ? string.Empty : reader.GetString(reader.GetOrdinal("CONTACT_NUMBER"));
+                        idea.ContactEmail = reader.IsDBNull(reader.GetOrdinal("CONTACT_EMAIL")) ? string.Empty : reader.GetString(reader.GetOrdinal("CONTACT_EMAIL"));
+                        idea.IdeaStatus = reader.IsDBNull(reader.GetOrdinal("Current_Status")) ? string.Empty : reader.GetString(reader.GetOrdinal("Current_Status"));
+                        idea.Id = reader.IsDBNull(reader.GetOrdinal("CREATOR_ID")) ? null : reader.GetGuid(reader.GetOrdinal("CREATOR_ID")).ToString();
+                        idea.Name = reader.IsDBNull(reader.GetOrdinal("Creator")) ? string.Empty : reader.GetString(reader.GetOrdinal("Creator"));
+                        idea.Email = reader.IsDBNull(reader.GetOrdinal("CREATOR_EMAIL")) ? string.Empty : reader.GetString(reader.GetOrdinal("CREATOR_EMAIL"));
+                        idea.ModeratorId = reader.IsDBNull(reader.GetOrdinal("APPROVER_ID")) ? string.Empty : reader.GetGuid(reader.GetOrdinal("APPROVER_ID")).ToString();
+                        idea.Moderator = reader.IsDBNull(reader.GetOrdinal("APPROVER")) ? string.Empty : reader.GetString(reader.GetOrdinal("APPROVER"));
+                        idea.ModeratorEmail = reader.IsDBNull(reader.GetOrdinal("APPROVER_EMAIL")) ? string.Empty : reader.GetString(reader.GetOrdinal("APPROVER_EMAIL"));
+                        idea.DelegatorId = reader.IsDBNull(reader.GetOrdinal("DELEGATE_APPROVER_ID")) ? string.Empty : reader.GetGuid(reader.GetOrdinal("DELEGATE_APPROVER_ID")).ToString();
+                        idea.Delegator = reader.IsDBNull(reader.GetOrdinal("DELEGATE_APPROVER")) ? string.Empty : reader.GetString(reader.GetOrdinal("DELEGATE_APPROVER"));
+                        idea.DelegatorEmail = reader.IsDBNull(reader.GetOrdinal("DELEGATE_APPROVER_EMAIL")) ? string.Empty : reader.GetString(reader.GetOrdinal("DELEGATE_APPROVER_EMAIL"));
+                        idea.PickerId = reader.IsDBNull(reader.GetOrdinal("PICKER_ID")) ? string.Empty : reader.GetGuid(reader.GetOrdinal("PICKER_ID")).ToString();
+                        idea.Picker = reader.IsDBNull(reader.GetOrdinal("Picker")) ? string.Empty : reader.GetString(reader.GetOrdinal("Picker"));
+                        idea.PickerEmail = reader.IsDBNull(reader.GetOrdinal("PICKER_EMAIL")) ? string.Empty : reader.GetString(reader.GetOrdinal("PICKER_EMAIL"));
+                        idea.CreatedDate = reader.IsDBNull(reader.GetOrdinal("Created_Date")) ? null : (DateTimeOffset?)reader.GetDateTimeOffset(reader.GetOrdinal("Created_Date"));
+                        idea.UpdatedDate = reader.IsDBNull(reader.GetOrdinal("Updated_Date")) ? null : (DateTimeOffset?)reader.GetDateTimeOffset(reader.GetOrdinal("Updated_Date"));
+                        idea.WatchCount = reader.IsDBNull(reader.GetOrdinal("Watch_Count")) ? 0 : (int)reader.GetInt32(reader.GetOrdinal("Watch_Count"));
+                        idea.CommentCount = reader.IsDBNull(reader.GetOrdinal("Comment_Count")) ? 0 : (int)reader.GetInt32(reader.GetOrdinal("Comment_Count"));
+                        //idea.IsSuccess = reader.IsDBNull(reader.GetOrdinal("IS_SUCCESS")) ? false : reader.GetBoolean(reader.GetOrdinal("IS_SUCCESS"));
+                        idea.IsSuccess = true;
+                        idea.Message = reader.IsDBNull(reader.GetOrdinal("DB_MESSAGE")) ? string.Empty : reader.GetString(reader.GetOrdinal("DB_MESSAGE"));
+                        ideas.Add(idea);
                     }
                 }
             }
@@ -600,7 +610,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
-                sqlCommand.Parameters.Add(new SqlParameter("IdeaId", ideaId));
+                sqlCommand.Parameters.Add(new SqlParameter("IDEA_ID", ideaId));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
