@@ -32,7 +32,7 @@ ul#menu-main > li > a:focus,ul#menu-main > li > a:active, ul#menu-main > li > a.
 }
 
 .btn.btn-theme {
-	background: #26c8aa !important;
+  background: #333 !important;
 }
 
 /* blog */

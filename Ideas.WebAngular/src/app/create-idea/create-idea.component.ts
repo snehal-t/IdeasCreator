@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { JustificationValidator } from './ideal-justification-validator';
+import { JustificationValidator } from '../view-ideas/ideal-justification-validator';
 import { Idea, Request } from '../idea';
 import { IdeasapiService } from '../services/ideasapi.service';
 import { Observable } from 'rxjs';
-import { ToastrService } from 'ngx-toastr'; 
+import { ToastrService } from 'ngx-toastr';
+import { AppGlobal } from '../config/appglobal';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create-idea',
@@ -17,7 +19,7 @@ export class CreateIdeaComponent implements OnInit {
   ideaForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private ideaService: IdeasapiService, private toastr: ToastrService) { }
+  constructor(private spinner: NgxSpinnerService, private formBuilder: FormBuilder, private ideaService: IdeasapiService, private toastr: ToastrService, private appGlobal: AppGlobal) { }
 
   ngOnInit() {
     //Initialize form
@@ -63,14 +65,16 @@ export class CreateIdeaComponent implements OnInit {
     this.request.idea = this.idea;
 
     //Call API
+    this.spinner.show();
     this.ideaService.CreateIdea(this.request).subscribe(res => {
       if (res.isSuccess) {
         this.ideaForm.reset();
         this.submitted = false;
-        this.toastr.success(res.message, "Success")
+        this.spinner.hide();
+        this.toastr.success(res.message, this.appGlobal.Success)
       }
       else {
-        this.toastr.error(res.message, "Error");
+        this.toastr.error(res.message, this.appGlobal.Error);
       }
     });
   }

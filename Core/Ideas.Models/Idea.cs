@@ -32,5 +32,6 @@ namespace Ideas.Models
         public string PickerId { get; set; }
         public string Picker { get; set; }
         public string PickerEmail { get; set; }
+        public bool IsWatching { get; set; }
     }
 }

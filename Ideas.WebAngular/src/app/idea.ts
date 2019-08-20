@@ -1,7 +1,7 @@
 export class Request {
   public author: string;
   public ideaId: string;
-  public assignee: User;
+  public assignee: string;
   public comments: string;
   public commentType: boolean;
   public commentParentId: number;
@@ -12,6 +12,7 @@ export class Request {
   public order: string;
   public isWatching: boolean;
   public idea: Idea;
+  public commentId?: string;
 }
 
 export class Response {
@@ -80,6 +81,7 @@ export class Comment extends User {
   public commentDescription: string;
   public createdDate: string;
   public updatedDate: string;
+  public isPublic: boolean;
 }
 
 export class Idea extends User {
@@ -111,4 +113,12 @@ export class Idea extends User {
   public pickerEmail: string;
   public action?: string;
   public comments?: string;
+  public assignee?: string;
+  public watchers?: Watcher[];
+  public commentList?: Comment[];
+  public commentId?: string;
+  public isWatching: boolean;
+  public isChild?: boolean;
+  public section?: string;
+  public currentSection?: string;
 }

@@ -10,7 +10,8 @@ namespace Ideas.Models
         public string IdeaId { get; set; }
         public string ParentCommentId { get; set; }
         public string CommentDescription { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
+        public bool IsPublic { get; set; }
+        public DateTimeOffset? CreatedDate { get; set; }
+        public DateTimeOffset? UpdatedDate { get; set; }
     }
 }

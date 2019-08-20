@@ -4,7 +4,7 @@ import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpClientModule } fr
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { AppGlobal } from '../config/appglobal';
-
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class IdeasapiService {
 
   triggerChildEvent = new BehaviorSubject<any>("");
   childEventCallback = this.triggerChildEvent.asObservable();
-  
+
   childEventMethod(data: any, action: string) {
     let modifiedData = {
       ...data,
@@ -23,10 +23,18 @@ export class IdeasapiService {
     this.triggerChildEvent.next(modifiedData);
   }
 
-  constructor(private http: HttpClient, private handler: HttpHandler, private appGlobal: AppGlobal) {
-    this.headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', 'bearer ' + sessionStorage.getItem("accessToken"));
+  constructor(private http: HttpClient, private handler: HttpHandler, private appGlobal: AppGlobal, private adalSvc: MsAdalAngular6Service, private signInReponse: SignInResponse) {
+    this.resetToken();
+  }
+
+  resetToken() {
+    var token = this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
+      sessionStorage.setItem(this.appGlobal.AccessToken, token);
+      console.log(token);
+      this.headers = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', 'bearer ' + sessionStorage.getItem("accessToken"));
+    });
   }
 
   SignIn(): Observable<SignInResponse> {
@@ -40,7 +48,7 @@ export class IdeasapiService {
 
   UpdateIdea(request: Request): Observable<Response> {
     request.author = sessionStorage.getItem("author");
-    return this.http.put<Response>(this.appGlobal.UpdateIdea, JSON.stringify(request), { headers: this.headers });
+    return this.http.post<Response>(this.appGlobal.UpdateIdea, JSON.stringify(request), { headers: this.headers });
   }
 
   WithdrawIdea(request: Request): Observable<Response> {
@@ -128,4 +136,13 @@ export class IdeasapiService {
     return this.http.post<IdeaResponse>(this.appGlobal.GetIdeaComments, JSON.stringify(request), { headers: this.headers });
   }
 
+  DeleteComment(request: Request): Observable<IdeaResponse> {
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<IdeaResponse>(this.appGlobal.DeleteComment, JSON.stringify(request), { headers: this.headers });
+  }
+
+  EditComment(request: Request): Observable<IdeaResponse> {
+    request.author = sessionStorage.getItem("author");
+    return this.http.post<IdeaResponse>(this.appGlobal.EditComment, JSON.stringify(request), { headers: this.headers });
+  }
 }

@@ -1,18 +1,18 @@
 <ngx-spinner type="ball-elastic-dots" size="large">
-  Loading
+  <img width="120" src="../assets/img/qideas-logo.png" />
 </ngx-spinner>
 
 <section id="ViewIdeas" class="section orange ideaslist">
   <div class="container">
     <div class="row">
       <div class="pull-left"><h4>{{title}}</h4></div>
-      <div class="pull-right span1 sortSelect">
+      <div class="pull-right span1 sortSelect" *ngIf="!noIdeaFound">
         <select [(ngModel)]="sortOrder" (change)="OnSortChange()">
           <option value="ASC">ASC</option>
           <option value="DESC">DESC</option>
         </select>
       </div>
-      <div class="pull-right span2 sortSelect">
+      <div class="pull-right span2 sortSelect" *ngIf="!noIdeaFound">
         <select [(ngModel)]="orderBy" (change)="OnSortChange()">
           <option value="CREATED_DATE">Created Date</option>
           <option value="TITLE">Idea Title</option>
@@ -23,13 +23,20 @@
           <option value="IDEA_TYPE">Idea Type</option>
         </select>
       </div>
-      <div class="pull-right span1 sortSelect">
+      <div class="pull-right span1 sortSelect" *ngIf="!noIdeaFound">
         <span>Sort By:</span>
       </div>
+      <div class="pull-right span2 sortSelect" *ngIf="!noIdeaFound">
+        <button type="button" (click)="openEditActionPopup(appGlobal.Idea_New)" class="btn btn-theme">Create Idea</button>
+      </div>
     </div>
+
     <!-- Four columns -->
     <div class="row" id="infinite-scroller">
-      <app-idea-list-item #appChild (openIdeaAction)="openIdeaAction($event)" (openIdeaDetails)="openIdeaDetails($event)" [idea]="item" [index]="item.ideaId" *ngFor="let item of ideaResponse.ideas;let i = index"></app-idea-list-item>
+      <div *ngIf="noIdeaFound" class="animated-fast flyIn span6 noideafound">
+        <h2>No ideas found</h2>
+      </div>
+      <app-idea-list-item #appChild [section]="section" (openEditAction)="openEditAction($event)" (refreshList)="refreshList($event)" (openCommentAction)="openCommentAction($event)" (openWatcherAction)="openWatcherAction($event)" (openIdeaAction)="openIdeaAction($event)" (openIdeaDetails)="openIdeaDetails($event)" [idea]="item" [index]="item.ideaId" *ngFor="let item of ideaResponse.ideas;let i = index"></app-idea-list-item>
     </div>
   </div>
 </section>
@@ -40,7 +47,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Idea Details</h4>
-        <button type="button" class="close" (click)="showDetails=false;" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" (click)="closeAll();" data-dismiss="modal">&times;</button>
       </div>
       <!-- Modal body -->
       <div class="modal-body">
@@ -136,19 +143,19 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <!--TODO-->
-        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('Edit')" class="btn btn-danger"><i class='fas fa-edit'></i> Edit</button>
-        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('Withdraw')" class="btn btn-danger"><i class='fas fa-trash'></i> Withdraw</button>
-        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Approve')" class="btn btn-danger"><i class='fas fa-check-square'></i> Approve</button>
-        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Reject')" class="btn btn-danger"><i class='fas fa-times-circle'></i> Reject</button>
-        <button type="button" *ngIf="isApprover || isDelegator" (click)="openCommentPopup('Delegate')" class="btn btn-danger"><i class='fas fa-share'></i> Delegate</button>
-        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('Pick')" class="btn btn-danger"><i class='fas fa-crosshairs'></i> Pick</button>
-        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('PickIdeaDone')" class="btn btn-danger"><i class='fas fa-clipboard-check'></i> Idea Implemented</button>
-        <button type="button" *ngIf="isPicker" (click)="openCommentPopup('PickIdeaGiveup')" class="btn btn-danger"><i class='fas fa-undo'></i> Give up</button>
-        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('PickIdeaRework')" class="btn btn-danger"><i class='fas fa-retweet'></i> Rework on Idea</button>
-        <button type="button" *ngIf="isCreator" (click)="openCommentPopup('PickIdeaAccepted')" class="btn btn-danger"><i class='fas fa-edit'></i> Accept Idea Implemented</button>
-        <button type="button" *ngIf="isApprover" (click)="openCommentPopup('PickIdeaReopen')" class="btn btn-danger"><i class='fas fa-edit'></i> Re-open Idea</button>
-        <button type="button" (click)="openCommentPopup('WatchIdea')" class="btn btn-danger"><i class='fas fa-eye'></i> Watch this Idea</button>
-        <button type="button" (click)="openCommentPopup('CommentIdea')" class="btn btn-danger"><i class='fas fa-comment-dots'></i> Comment</button>
+        <button type="button" *ngIf="isCreator && isEdit" (click)="openEditActionPopup(appGlobal.Idea_Edit)" class="btn btn-theme"><i class='fas fa-edit'></i> Edit</button>
+        <button type="button" *ngIf="isCreator && isWithdraw" (click)="openCommentPopup(appGlobal.Idea_Withdraw)" class="btn btn-theme"><i class='fas fa-trash'></i> Withdraw</button>
+        <button type="button" *ngIf="(isApprover || isDelegator) && isApprove" (click)="openCommentPopup(appGlobal.Idea_Approved)" class="btn btn-theme"><i class='fas fa-check-square'></i> Approve</button>
+        <button type="button" *ngIf="(isApprover || isDelegator) && isReject" (click)="openCommentPopup(appGlobal.Idea_Reject)" class="btn btn-theme"><i class='fas fa-times-circle'></i> Reject</button>
+        <button type="button" *ngIf="(isApprover || isDelegator) && isDelegate" (click)="openCommentPopup(appGlobal.Idea_Delegate)" class="btn btn-theme"><i class='fas fa-share'></i> Delegate</button>
+        <button type="button" *ngIf="isPick" (click)="openCommentPopup(appGlobal.Idea_Pick)" class="btn btn-theme"><i class='fas fa-crosshairs'></i> Pick</button>
+        <button type="button" *ngIf="isPicker && isDone" (click)="openCommentPopup(appGlobal.Idea_Done)" class="btn btn-theme"><i class='fas fa-clipboard-check'></i> Idea Implemented</button>
+        <button type="button" *ngIf="isPicker && isGiveUp" (click)="openCommentPopup(appGlobal.Idea_GiveUp)" class="btn btn-theme"><i class='fas fa-undo'></i> Give up</button>
+        <button type="button" *ngIf="isCreator && isRework" (click)="openCommentPopup(appGlobal.Idea_Rework)" class="btn btn-theme"><i class='fas fa-retweet'></i> Rework on Idea</button>
+        <button type="button" *ngIf="isCreator && isAccept" (click)="openCommentPopup(appGlobal.Idea_Accept)" class="btn btn-theme"><i class='fas fa-edit'></i> Accept Idea Implemented</button>
+        <button type="button" *ngIf="(isApprover || isDelegator) && (isDone || isGiveUp || isRework)" (click)="openCommentPopup(appGlobal.Idea_Reopen)" class="btn btn-theme"><i class='fas fa-edit'></i> Re-open Idea</button>
+        <button type="button" *ngIf="isWatch" (click)="openWatcherPopup(appGlobal.Idea_Get_Watchers)" class="btn btn-theme"><i class='fas fa-eye'></i> Watchers</button>
+        <button type="button" *ngIf="isComment" (click)="openCommentsPopup(appGlobal.Idea_Get_Comments)" class="btn btn-theme"><i class='fas fa-comment-dots'></i> Comments</button>
       </div>
     </div>
   </div>
@@ -161,16 +168,26 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">{{actionTitle}}</h4>
-          <button type="button" class="close" (click)="showDetails=false;actionPopup=false;">&times;</button>
+          <button type="button" class="close" (click)="closeAll();">&times;</button>
         </div>
         <!-- Modal body -->
         <div class="modal-body">
           <div class="row">
-            <div class="span5">
+            <div class="span10">
               <div class="form-group">
                 <label>Idea</label>
                 <div class="input-group">
                   <span>{{ideaDetails.title}}</span>
+                </div>
+              </div>
+              <div class="form-group" *ngIf="isDelegatorAction">
+                <label>Assignee Email</label>
+                <div class="input-group">
+                  <input type="text" placeholder="Enter assignee email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                  <div *ngIf="submitted && f.comments.errors" class="validation">
+                    <div *ngIf="f.comments.errors.required">Email is required</div>
+                    <div *ngIf="f.comments.errors.email">Enter valid email</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group">
@@ -190,9 +207,235 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <!--TODO-->
-          <button class="btn btn-danger">Submit</button>
+          <button class="btn btn-theme">Submit</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<div class="modal span12" id="myModal" *ngIf="watcherPopup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{actionTitle}}</h4>
+        <button type="button" class="close" (click)="closeAll();">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="span10">
+            <div class="form-group">
+              <label>Idea</label>
+              <div class="input-group">
+                <span>{{ideaDetails.title}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="watcherItem" *ngFor="let item of ideaDetails.watchers">
+                <label>{{item.name}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <!--TODO-->
+        <button class="btn btn-theme" (click)="getActionTitle(appGlobal.Idea_Watch)">{{watchTitle}} this idea</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal span12 commentsSection" id="myModal" *ngIf="commentsPopup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">{{actionTitle}}</h4>
+          <button type="button" class="close" (click)="closeAll();">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="span11">
+              <div class="form-group">
+                <label>Idea: <span class="commentDesc">{{ideaDetails.title}}</span></label>
+              </div>
+              <div class="form-group">
+                <div *ngFor="let item of ideaDetails.commentList">
+                  <label class="commentItem">
+                    {{item.name}}: <span class="commentDesc">{{item.commentDescription}}</span>
+                    <label>
+                      <span class="commentDesc pull-right">{{item.updatedDate | date: 'dd/MM/yyyy hh:mm aa'}}</span>
+                      <span *ngIf="authId == item.id" class="pull-left commentIcon">
+                        <a title="Delete" (click)="deleteComment(item.commentId)"><i class='fas fa-trash'></i></a>
+                        <a title="Edit" (click)="editComment(item.commentId, item.commentDescription)"><i class='fas fa-edit'></i></a>
+                      </span>
+                    </label>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="form-group">
+            <label>{{commentFormTItle}} Comment: </label>
+            <div class="input-group" name="commentSection">
+              <textarea id="commentBox" placeholder="Put your comments" formControlName="comments" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.comments.errors }"></textarea>
+              <div *ngIf="submitted && f.comments.errors" class="validation">
+                <div *ngIf="f.comments.errors.required">Comments is required</div>
+                <div *ngIf="f.comments.errors.minLength">Comments lenght should be more than 5 characters</div>
+                <div *ngIf="f.comments.errors.maxLength">Comments length should not be more than 4000 characters</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-theme">Submit</button>
+          <button type="button" *ngIf="editCancel" (click)="closeAll();CancelEditComment();" class="btn btn-theme">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal span12" id="myModal" *ngIf="editPopup">
+  <div class="modal-dialog">
+    <form [formGroup]="ideaForm" (ngSubmit)="onIdeaSubmit()">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">{{actionTitle}}</h4>
+          <button type="button" class="close" (click)="closeAll();" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="span5">
+              <div class="form-group">
+                <label>Type</label>
+                <div class="input-group">
+                  <select formControlName="category" [ngModel]="ideaDetailsForm.type" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.category.errors }">
+                    <option value="">Select Category</option>
+                    <option value="Idea">Idea</option>
+                    <option value="POC">POC</option>
+                  </select>
+                  <div *ngIf="ideaSubmitted && i.category.errors" class="validation">
+                    <div *ngIf="i.category.errors.required">Category is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Source</label>
+                <div class="input-group">
+                  <select formControlName="source" [ngModel]="ideaDetailsForm.source" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.source.errors }">
+                    <option value="">Select Source</option>
+                    <option value="Internal">Internal</option>
+                    <option value="External">External</option>
+                  </select>
+                  <div *ngIf="ideaSubmitted && i.source.errors" class="validation">
+                    <div *ngIf="i.source.errors.required">Source is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <div class="input-group">
+                  <input type="text" [ngModel]="ideaDetailsForm.title" placeholder="Title" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.title.errors }" />
+                  <div *ngIf="ideaSubmitted && i.title.errors" class="validation">
+                    <div *ngIf="i.title.errors.required">Title is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Brief about Idea</label>
+                <div class="input-group">
+                  <textarea placeholder="Brief your idea" [ngModel]="ideaDetailsForm.description" formControlName="brief" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.brief.errors }"></textarea>
+                  <div *ngIf="ideaSubmitted && i.brief.errors" class="validation">
+                    <div *ngIf="i.brief.errors.required">Brief is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Business case</label>
+                <div class="input-group">
+                  <textarea placeholder="Provide business case" [ngModel]="ideaDetailsForm.businessCase" formControlName="businessCase" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.businessCase.errors }"></textarea>
+                  <div *ngIf="ideaSubmitted && i.businessCase.errors" class="validation">
+                    <div *ngIf="i.businessCase.errors.required">Business case is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="span5">
+              <div class="form-group">
+                <label>Ideal time</label>
+                <div class="input-group">
+                  <select formControlName="idealTime" [ngModel]="ideaDetailsForm.idealTime" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.idealTime.errors }">
+                    <option value="">Select Ideal Time</option>
+                    <option value="Less than 2 weeks">Less than 2 weeks</option>
+                    <option value="Less than 4 weeks">Less than 4 weeks</option>
+                    <option value="Less than 8 weeks">Less than 8 weeks</option>
+                    <option value="Open">Open</option>
+                  </select>
+                  <div *ngIf="ideaSubmitted && i.idealTime.errors" class="validation">
+                    <div *ngIf="i.idealTime.errors.required">Ideal time is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Ideal time justification</label>
+                <div class="input-group">
+                  <textarea placeholder="Less than 2 weeks justification" [ngModel]="ideaDetailsForm.businessJustification" formControlName="idealTimeJustification" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.idealTimeJustification.errors }"></textarea>
+                  <div *ngIf="ideaSubmitted && i.idealTimeJustification.errors" class="validation">
+                    <div *ngIf="i.idealTimeJustification.errors.justificationValidator">Less than 2 weeks justification is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Contact name</label>
+                <div class="input-group">
+                  <input type="text" placeholder="Contact Name" [ngModel]="ideaDetailsForm.contactName" formControlName="contactName" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.contactName.errors }" />
+                  <div *ngIf="ideaSubmitted && i.contactName.errors" class="validation">
+                    <div *ngIf="i.contactName.errors.required">Contact name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Contact email</label>
+                <div class="input-group">
+                  <input type="text" placeholder="Contact Email" [ngModel]="ideaDetailsForm.contactEmail" formControlName="contactEmail" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.contactEmail.errors }" />
+                  <div *ngIf="ideaSubmitted && i.contactEmail.errors" class="validation">
+                    <div *ngIf="i.contactEmail.errors.required">Contact email is required</div>
+                    <div *ngIf="i.contactEmail.errors.email">Enter valid contact email</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Contact Number</label>
+                <div class="input-group">
+                  <input type="text" placeholder="Contact Number" [ngModel]="ideaDetailsForm.contactMobileNo" formControlName="contactNumber" class="form-control" [ngClass]="{ 'is-invalid': ideaSubmitted && i.contactNumber.errors }" />
+                  <div *ngIf="ideaSubmitted && i.contactNumber.errors" class="validation">
+                    <div *ngIf="i.contactNumber.errors.required">Contact number is required</div>
+                    <div *ngIf="i.contactNumber.errors.pattern">Enter valid contact number</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <!--TODO-->
+          <button class="btn btn-theme">Submit</button>
+          <button type="button" (click)="closeAll();" class="btn btn-theme"> Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="showDetails || actionPopup || watcherPopup || commentsPopup || editPopup" id="overlay"></div>

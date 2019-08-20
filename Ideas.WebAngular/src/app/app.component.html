@@ -13,14 +13,16 @@
         <nav class="pull-left nav-collapse collapse">
           <ul id="menu-main" class="nav">
             <li><a title="Dashboard" href="#Dashboard" routerLink="Dashboard">Dashboard</a></li>
-            <li><a title="Create Idea" href="#CreateIdea" routerLink="CreateIdea">Create Idea</a></li>
             <li><a title="View Ideas" href="#ViewIdeas" routerLink="ViewIdeas">View Ideas</a></li>
-            <li><a title="My Ideas" href="#MyIdeas" routerLink="MyIdeas">My Ideas</a></li>
+            <li><a title="My Ideas" href="#MyIdeas" *ngIf="IsCreator" routerLink="MyIdeas">My Ideas</a></li>
             <li><a title="New Ideas" href="#OpenIdeas" *ngIf="IsApprover" routerLink="OpenIdeas">New Ideas</a></li>
             <li><a title="Approved Ideas" href="#ApprovedIdeas" *ngIf="IsApprover" routerLink="ApprovedIdeas">Approved Ideas</a></li>
             <li><a title="Rejected Ideas" href="#RejectedIdeas" *ngIf="IsApprover" routerLink="RejectedIdeas">Rejected Ideas</a></li>
           </ul>
           <ul id="menu-main" class="nav">
+            <li>
+              <a title="Alerts"><i class='fas fa-bell'></i></a>
+            </li>
             <li>
               <a (click)="onLogout()" title="Logout"><img height="30" width="30" src="../assets/img/signoff.png" alt="Logout" /></a>
             </li>

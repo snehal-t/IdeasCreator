@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppGlobal } from '../config/appglobal';
 
 @Component({
   selector: 'app-my-ideas',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyIdeasComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  section: string;
+  constructor(private appGlobal: AppGlobal) { }
 
   ngOnInit() {
+    this.title = this.appGlobal.myIdeaTitle;
+    this.section = this.appGlobal.myIdeaSection;
   }
-
 }

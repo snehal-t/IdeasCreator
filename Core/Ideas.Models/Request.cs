@@ -13,8 +13,9 @@
     {
         public string Author { get; set; }
         public string IdeaId { get; set; }
-        public User Assignee { get; set; }
+        public string Assignee { get; set; }
         public string Comments { get; set; }
+        public string commentId { get; set; }
         public bool CommentType { get; set; }
         public int CommentParentId { get; set; }
         public string IdeaPage { get; set; }

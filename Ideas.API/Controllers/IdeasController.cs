@@ -12,6 +12,13 @@ using System.Web;
 using System.Security.Claims;
 using Ideas.Services.Services;
 using Ideas.Common.ErrorHandler;
+using Microsoft.Graph.Extensions;
+using Microsoft.Graph;
+using System.Net.Http.Headers;
+using Microsoft.IdentityModel.Clients;
+using Microsoft.Graph.Extensions;
+using System.Net.Http;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Ideas.API.Controllers
 {
@@ -22,6 +29,7 @@ namespace Ideas.API.Controllers
     {
         private readonly IIdeas _iIdeas;
         private readonly string ErrorMessage = "Something went wrong";
+        
         public IdeasController(IIdeas iIdeas)
         {
             _iIdeas = iIdeas;
@@ -267,6 +275,38 @@ namespace Ideas.API.Controllers
             }
         }
 
+        [Route("api/EditComment")]
+        [HttpPost]
+        public ActionResult<Response> EditComment(Request request)
+        {
+            try
+            {
+                var user = GetCurrentUser();
+                return _iIdeas.EditComment(request.IdeaId, request.commentId, user.Email, request.Author, request.CommentType, request.CommentParentId, request.Comments);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                return new Response(false, ex.ToString());
+            }
+        }
+
+        [Route("api/DeleteComment")]
+        [HttpPost]
+        public ActionResult<Response> DeleteComment(Request request)
+        {
+            try
+            {
+                var user = GetCurrentUser();
+                return _iIdeas.DeleteComment(request.IdeaId, request.commentId, user.Email, request.Author);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                return new Response(false, ex.ToString());
+            }
+        }
+
         [Route("api/GetIdeas")]
         [HttpPost]
         public ActionResult<IdeasResponse> GetIdeas(Request request)
@@ -347,17 +387,57 @@ namespace Ideas.API.Controllers
             }
         }
 
-        private User GetCurrentUser()
+        [Route("api/GetAssignee")]
+        [HttpPost]
+        public async Task<List<Microsoft.Graph.User>> GetUserList()
         {
-            User user = new User();
-            user.Name = HttpContext.User.FindFirst(ClaimTypes.GivenName).Value + " " + HttpContext.User.FindFirst(ClaimTypes.Surname).Value;
-            user.Email = HttpContext.User.Identity.Name;
-            return user;
+            List<Microsoft.Graph.User> userResult = new List<Microsoft.Graph.User>();
+            GraphServiceClient graphClient = new GraphServiceClient(new AzureAuthenticationProvider());
+            IGraphServiceUsersCollectionPage users = await graphClient.Users.Request().Top(500).GetAsync(); // The hard coded Top(500) is what allows me to pull all the users, the blog post did this on a param passed in
+            userResult.AddRange(users);
+
+            while (users.NextPageRequest != null)
+            {
+                users = await users.NextPageRequest.GetAsync();
+                userResult.AddRange(users);
+            }
+            return userResult;
         }
+        
+        private Ideas.Models.User GetCurrentUser()
+        {
+            return new Ideas.Models.User
+            {
+                Name = HttpContext.User.FindFirst(ClaimTypes.GivenName).Value + " " + HttpContext.User.FindFirst(ClaimTypes.Surname).Value,
+                Email = HttpContext.User.Identity.Name
+            };
+        }
+
 
         private void LogError(Exception ex)
         {
 
+        }
+    }
+
+    class AzureAuthenticationProvider : IAuthenticationProvider
+    {
+        private string clientId = "520e43d8-b87b-457d-8bd6-e5fa53494354";
+        private string appKey = "E?kX0@Ukh-+ZYjUR19cDPWpr6ig7c[HK";
+        private string aadInstance = "https://login.microsoftonline.com/";
+
+        public async Task AuthenticateRequestAsync(HttpRequestMessage request)
+        {
+            string signedInUserID = "o7nNpKHZ1sU4jao_uXzw2nKlifY7bAY6prUQWetD-kE";
+            string tenantID = "21212548-dd86-4f27-a1fa-faf16eedb7c3";
+
+            // get a token for the Graph without triggering any user interaction (from the cache, via multi-resource refresh token, etc)
+            ClientCredential creds = new ClientCredential(clientId, appKey);
+            // initialize AuthenticationContext with the token cache of the currently signed in user, as kept in the app's database
+            AuthenticationContext authenticationContext = new AuthenticationContext(aadInstance + tenantID, false);
+            AuthenticationResult authResult = await authenticationContext.AcquireTokenAsync("https://graph.microsoft.com/", creds);
+
+            request.Headers.Add("Authorization", "Bearer " + authResult.AccessToken);
         }
     }
 }

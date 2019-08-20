@@ -1,0 +1,9 @@
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\bin\Release\netstandard2.0\Ideas.Models.deps.json
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\bin\Release\netstandard2.0\Ideas.Models.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\bin\Release\netstandard2.0\Ideas.Models.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.csprojAssemblyReference.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.csproj.CoreCompileInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.AssemblyInfoInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.AssemblyInfo.cs
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Models\obj\Release\netstandard2.0\Ideas.Models.pdb

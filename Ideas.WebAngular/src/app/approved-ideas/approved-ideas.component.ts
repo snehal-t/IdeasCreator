@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppGlobal } from '../config/appglobal';
 
 @Component({
   selector: 'app-approved-ideas',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApprovedIdeasComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  section: string;
+  constructor(private appGlobal: AppGlobal) { }
 
   ngOnInit() {
+    this.title = this.appGlobal.approvedIdeaTitle;
+    this.section = this.appGlobal.approvedIdeaSection;
   }
 
 }

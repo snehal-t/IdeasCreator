@@ -1,0 +1,14 @@
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Services.deps.json
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Services.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Services.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Data.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Models.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Data.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\bin\Release\netstandard2.0\Ideas.Models.pdb
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.csprojAssemblyReference.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.csproj.CoreCompileInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.AssemblyInfoInputs.cache
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.AssemblyInfo.cs
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.csproj.CopyComplete
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.dll
+D:\quinnox one drive\OneDrive - Quinnox Consultancy Services Ltd\Projects\IdeasCreator\Source\IdeasApp\Core\Ideas.Services\obj\Release\netstandard2.0\Ideas.Services.pdb

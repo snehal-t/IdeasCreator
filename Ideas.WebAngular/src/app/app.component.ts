@@ -14,29 +14,32 @@ export class AppComponent {
   title = 'Ideas Creator';
   showHtml: boolean = true;
   IsApprover: boolean = false;
+  IsCreator: boolean = false;
   
   constructor(private adalSvc: MsAdalAngular6Service, private appGlobal: AppGlobal, private apiService: IdeasapiService, private signInReponse: SignInResponse) {
     var token = this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
-      sessionStorage.setItem("accessToken", token);
-      console.log(this.adalSvc.userInfo.profile);
+      sessionStorage.setItem(this.appGlobal.AccessToken, token);
       this.apiService.SignIn().subscribe(res => {
         this.signInReponse = res as SignInResponse;
         if (this.signInReponse.isSuccess) {
           this.showHtml = true;
-          sessionStorage.setItem("name", this.adalSvc.userInfo.userName);
-          sessionStorage.setItem("email", this.adalSvc.userInfo.userName);
-          sessionStorage.setItem("role", this.signInReponse.role);
-          if (this.signInReponse.role.indexOf('Approver') != -1) {
+          sessionStorage.setItem(this.appGlobal.Name, this.adalSvc.userInfo.profile.name);
+          sessionStorage.setItem(this.appGlobal.Email, this.adalSvc.userInfo.userName);
+          sessionStorage.setItem(this.appGlobal.Role, this.signInReponse.role);
+          if (this.signInReponse.role.indexOf(this.appGlobal.Approver) != -1) {
             this.IsApprover = true;
-            sessionStorage.setItem("moderator", "true");
+            sessionStorage.setItem(this.appGlobal.Moderator, "true");
           }
           else {
-            sessionStorage.setItem("moderator", "false");
+            sessionStorage.setItem(this.appGlobal.Moderator, "false");
           }
-          sessionStorage.setItem("author", this.signInReponse.author);
+          if (this.signInReponse.role.indexOf(this.appGlobal.Creator) != -1) {
+            this.IsCreator = true;
+          }
+          sessionStorage.setItem(this.appGlobal.Author, this.signInReponse.author);
         }
       });
-    });;
+    });
   }
 
   onLogout() {

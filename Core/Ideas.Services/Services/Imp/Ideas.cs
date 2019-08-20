@@ -77,7 +77,7 @@ namespace Ideas.Services.Services.Imp
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
-        public Response DeligateIdea(String ideaId, User assignee, string userComments, string email, string author)
+        public Response DeligateIdea(String ideaId, string assignee, string userComments, string email, string author)
         {
             InviteeList inviteeList = _iIdeaRepository.DeligateIdea(ideaId, assignee, userComments, email, author);
             if (inviteeList.IsSuccess)
@@ -153,6 +153,33 @@ namespace Ideas.Services.Services.Imp
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
+
+        public Response EditComment(string ideaId, string commentId, string email, string author, bool commentType, long commentParentId, string userComments)
+        {
+            bool result = _iIdeaRepository.EditComment(ideaId, commentId, email, author, true, commentParentId, userComments);
+            if (result)
+            { 
+                return new Response(result, "Comment has been edited successfully");
+            }
+            else
+            {
+                return new Response(result, "Edit comment failed");
+            }
+        }
+
+        public Response DeleteComment(string ideaId, string commentId, string email, string author)
+        {
+            bool result = _iIdeaRepository.DeleteComment(ideaId, commentId, email, author);
+            if (result)
+            {
+                return new Response(result, "Comment has been deleted successfully");
+            }
+            else
+            {
+                return new Response(result, "Delete comment failed");
+            }
+        }
+
         public IdeasResponse GetIdeas(string email, string author, string ideaPage, int pageSize, int currentPage, string orderBy, string order)
         {
             List<Idea> ideas = _iIdeaRepository.GetIdeas(email, author, ideaPage, pageSize, currentPage, orderBy, order);
@@ -167,7 +194,7 @@ namespace Ideas.Services.Services.Imp
                     return new IdeasResponse(ideas.First().IsSuccess, ideas.First().Message, null);
                 }
             }
-            return new IdeasResponse(false, "", null);
+            return new IdeasResponse(true, "", null);
         }
         public WatchersResponse GetIdeaWatchers(string email, string author, string ideaId)
         {
@@ -183,7 +210,7 @@ namespace Ideas.Services.Services.Imp
                     return new WatchersResponse(watchers.First().IsSuccess, watchers.First().Message, null);
                 }
             }
-            return new WatchersResponse(false, "", null);
+            return new WatchersResponse(true, "", null);
         }
         public CommentsResponse GetIdeaComments(string ideaId, string email, string author, int pageSize, int currentPage)
         {
@@ -199,7 +226,7 @@ namespace Ideas.Services.Services.Imp
                     return new CommentsResponse(comments.First().IsSuccess, comments.First().Message, null);
                 }
             }
-            return new CommentsResponse(false, "", null);
+            return new CommentsResponse(true, "", null);
         }
         public AlertsResponse GetAlerts(string email, string author, int pageSize, int currentPage)
         {
@@ -215,7 +242,7 @@ namespace Ideas.Services.Services.Imp
                     return new AlertsResponse(alerts.First().IsSuccess, alerts.First().Message, null);
                 }
             }
-            return new AlertsResponse(false, "", null);
+            return new AlertsResponse(true, "", null);
         }
         public IdeaResponse GetIdeaDetails(string email, string author, string ideaId)
         {
@@ -254,6 +281,8 @@ namespace Ideas.Services.Services.Imp
         PickIdeaRework = 10,
         PickIdeaAccept = 11,
         PickIdeaReopen = 12,
-        CommentIdea = 13
+        CommentIdea = 13,
+        EditComment = 14,
+        DeleteComment = 15
     }
 }
