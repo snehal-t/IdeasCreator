@@ -29,6 +29,10 @@ export class IdeasResponse extends Response {
   public ideas: Idea[];
 }
 
+export class DashboardResponse extends Response {
+  public dashboard: Dashboard;
+}
+
 export class WatchersResponse extends Response {
   public watchers: Watcher[];
 }
@@ -67,10 +71,12 @@ export class Alert extends User {
 }
 
 export class Dashboard {
-  public totalIdeas: string;
-  public ideasInAction: string;
-  public ideasPendingAction: string;
-  public ideasTrending: string;
+  public totalIdeas: number;
+  public ideasInAction: number;
+  public ideasPendingAction: number;
+  public ideasRejected: number;
+  public ideasAccepted: number;
+  public ideasTrending: number;
   public mostCommented: Idea;
 }
 

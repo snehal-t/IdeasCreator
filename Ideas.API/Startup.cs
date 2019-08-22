@@ -30,7 +30,17 @@ namespace Ideas.API
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
-
+            //Enable swagger
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "QIdeas API", Version = "V1" });
+                c.AddSecurityDefinition("oauth2", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey
+                });
+            });
             //BotAuth
             var msAppIdKey = Configuration.GetSection("MicrosoftAppId")?.Value;
             var msAppPwdKey = Configuration.GetSection("MicrosoftAppPassword")?.Value;
@@ -68,6 +78,10 @@ namespace Ideas.API
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "QIdeas API V1");
+            });
         }
     }
 }

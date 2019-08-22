@@ -28,5 +28,6 @@ namespace Ideas.Data.Repositories.Ideas
         List<Comment> GetIdeaComments(string ideaId, string email, string author, int pageSize, int currentPage);
         List<Alert> GetAlerts(string email, string author, int pageSize, int currentPage);
         Idea GetIdeaDetails(string email, string author, string ideaId);
+        Dashboard GetDashboard(string author, string email);
     }
 }

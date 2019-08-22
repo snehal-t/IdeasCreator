@@ -32,6 +32,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
   authId: string;
   truncateDesc: string;
   isIdea: boolean;
+  isInit: boolean = true;
 
   //Roles
   isCreator: boolean = false;
@@ -58,7 +59,6 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     private ref: ChangeDetectorRef, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    debugger
     if (this.idea.type == this.appGlobal.Idea) {
       this.isIdea = true;
     }
@@ -75,7 +75,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     this.setIconsAsPerStatus();
     this.authId = sessionStorage.getItem(this.appGlobal.Author);
     this.ideaService.childEventCallback.pipe(takeWhile(() => this.componentInstace)).subscribe(res => {
-      if (this.index === res.ideaId && this.section == res.section) {
+      if (this.index === res.ideaId && this.section == res.section && !this.isInit) {
         this.request.assignee = null;
         this.comments = res.comments;
         this.request.ideaId = res.ideaId;
@@ -122,7 +122,6 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
             this.deleteComment();
             break;
           case this.appGlobal.Idea_Edit_Comment:
-            debugger
             this.request.commentId = res.commentId;
             this.editComment();
             break;
@@ -135,7 +134,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
         }
       }
       else {
-        //this.componentInstace = false;
+        this.isInit = false;
       }
     })
   }
@@ -181,6 +180,18 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
         this.isReject = true;
         break;
       case this.appGlobal.Idea_Approved:
+        //Creator(Edit, Withdraw, Hold)
+        this.isEdit = true;
+        this.isWithdraw = true;
+        this.isHold = true;
+        //Moderator(Reject)
+        this.isReject = true;
+        //EndUser(Pick, Watch, Comment)
+        this.isPick = true;
+        this.isWatch = true;
+        this.isComment = true;
+        break;
+      case this.appGlobal.Idea_GiveUp:
         //Creator(Edit, Withdraw, Hold)
         this.isEdit = true;
         this.isWithdraw = true;
@@ -262,7 +273,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
       ...this.idea,
       section: this.section
     }
-    this.openIdeaDetails.next(this.idea);
+    this.openIdeaDetails.emit(this.idea);
   }
 
   parentOpenIdeaAction(action: string) {
@@ -274,7 +285,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
       action: action,
       section: this.section
     }
-    this.openIdeaAction.next(this.idea);
+    this.openIdeaAction.emit(this.idea);
   }
 
   parentOpenEditAction(action: string) {
@@ -286,7 +297,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
       action: action,
       section: this.section
     }
-    this.openEditAction.next(this.idea);
+    this.openEditAction.emit(this.idea);
   }
 
   parentOpenWatcherAction() {
@@ -300,10 +311,10 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     this.ideaService.GetIdeaWatchers(this.request).subscribe(res => {
       if (res.isSuccess) {
         this.idea.watchers = res.watchers;
-        this.openWatcherAction.next(this.idea);
+        this.openWatcherAction.emit(this.idea);
       }
       else {
-        this.openWatcherAction.next(this.idea);
+        this.openWatcherAction.emit(this.idea);
         this.toastr.error(res.message, this.appGlobal.Error);
       }
       this.spinner.hide();
@@ -321,10 +332,10 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     this.ideaService.GetIdeaComments(this.request).subscribe(res => {
       if (res.isSuccess) {
         this.idea.commentList = res.comments;
-        this.openCommentAction.next(this.idea);
+        this.openCommentAction.emit(this.idea);
       }
       else {
-        this.openCommentAction.next(this.idea);
+        this.openCommentAction.emit(this.idea);
         this.toastr.error(res.message, this.appGlobal.Error);
       }
       this.spinner.hide();
@@ -336,7 +347,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
       ...this.idea,
       section: this.section
     }
-    this.refreshList.next(this.idea);
+    this.refreshList.emit(this.idea);
   }
 
   withdrawIdea() {

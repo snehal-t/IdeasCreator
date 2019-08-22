@@ -29,7 +29,10 @@
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
+              "src/assets/js/font-awesome.js",
               "src/assets/js/jquery.js",
+              "src/assets/js/highcharts.js",
+              "src/assets/js/dashboard.js",
               "src/assets/js/jquery.scrollTo.js",
               "src/assets/js/jquery.nav.js",
               "src/assets/js/jquery.localScroll.js",
@@ -39,8 +42,7 @@
               "src/assets/js/jquery.flexslider.js",
               "src/assets/js/inview.js",
               "src/assets/js/animate.js",
-              "src/assets/js/custom.js",
-              "src/assets/js/font-awesome.js"
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {

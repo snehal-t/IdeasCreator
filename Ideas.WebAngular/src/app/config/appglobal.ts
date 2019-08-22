@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AppGlobal {
   //API Base URL
-  //readonly ApiBaseUrl: string = 'https://localhost:44320/api';
-  readonly ApiBaseUrl: string = 'https://ideasapi.azurewebsites.net/api';
+  readonly ApiBaseUrl: string = 'https://localhost:44320/api';
+  //readonly ApiBaseUrl: string = 'https://ideasapi.azurewebsites.net/api';
 
   //API URL
   readonly SignIn: string = this.ApiBaseUrl + '/SignIn';
@@ -29,6 +29,7 @@ export class AppGlobal {
   readonly GetIdeaDetails: string = this.ApiBaseUrl + '/GetIdeaDetails';
   readonly DeleteComment: string = this.ApiBaseUrl + '/DeleteComment';
   readonly EditComment: string = this.ApiBaseUrl + '/EditComment';
+  readonly GetDashboard: string = this.ApiBaseUrl + '/GetDashboard';
 
   //Lazy loading page size
   readonly PageSize: number = 4;

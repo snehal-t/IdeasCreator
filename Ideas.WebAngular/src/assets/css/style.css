@@ -111,7 +111,7 @@ body {
 }
 
 div.sortSelect {
-  margin-top: 23px;
+  margin:0 0 0 10px;
 }
 
   div.sortSelect span {
@@ -1897,11 +1897,11 @@ i.icon-white {
 .modal {
   left: 5%;
   top:5%;
-  background: #1bac91;
+  background: #fff;
 }
 
 .modal-footer {
-  background: #1bac91;
+  background: #fff;
 }
 
 .modal-body input, textarea, select {
@@ -1910,7 +1910,7 @@ i.icon-white {
 
 .input-group span
 {
-  color:#fff;
+  color:#000;
 }
 
 
@@ -1919,18 +1919,27 @@ i.icon-white {
 }
 
 .form-group label {
-  color: #fff;
+  color: #000;
   font-weight: normal;
   font-size: 15px;
 }
 
 .modal-title {
-  color: #fff;
+  color: #000;
   font-weight: bold;
 }
 
 .modal-header .close {
   margin-top: -50px;
+}
+
+.modal-header
+{
+  background:#eee;
+}
+
+.modal-footer {
+  background: #eee;
 }
 
 .watcherContainer {
@@ -1948,7 +1957,7 @@ i.icon-white {
 
 .commentItem {
   display: block;
-  background: #26c8aa;
+  background: #ccc;
   padding: 20px;
   min-height: 50px;
   display: block;
@@ -1958,7 +1967,7 @@ button.close
 {
   font-size:25px;
   opacity:1.2;
-  color:#fff;
+  color:#000;
 }
 
 .commentDesc {
@@ -2002,3 +2011,5 @@ button.close
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
   z-index: 1031; /* Specify a stack order in case you're using a different order for other elements */
 }
+
+

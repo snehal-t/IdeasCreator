@@ -844,10 +844,8 @@ namespace Ideas.Data.Repositories.Ideas.Imp
             try
             {
                 _dbConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("[QDEA].[QDEASP_GET_IDEA_DETAILS]", (SqlConnection)_dbConnection);
+                SqlCommand sqlCommand = new SqlCommand("[QDEA].[QDEASP_IDEA_GETTITLE]", (SqlConnection)_dbConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
-                sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
                 sqlCommand.Parameters.Add(new SqlParameter("Idea_Id", ideaId));
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -857,7 +855,7 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                         try
                         {
                             //Set Idea
-
+                            idea.Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? string.Empty : reader.GetString(reader.GetOrdinal("Title"));
                         }
                         catch (Exception ex)
                         {
@@ -878,6 +876,54 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 }
             }
             return idea;
+        }
+
+        public Dashboard GetDashboard(string author, string email)
+        {
+            Dashboard dashboard = new Dashboard();
+            try
+            {
+                _dbConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand("QDEA.QDEASP_GET_IDEA_DASHBOARD", (SqlConnection)_dbConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add(new SqlParameter("MANAGMENT_TYPE", author));
+                sqlCommand.Parameters.Add(new SqlParameter("AUTHORIZATION_ID", author));
+                sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
+                sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
+                
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            dashboard.IsSuccess = reader.IsDBNull(reader.GetOrdinal("IS_SUCCESS")) ? false : reader.GetBoolean(reader.GetOrdinal("IS_SUCCESS"));
+                            dashboard.Message = reader.IsDBNull(reader.GetOrdinal("IS_SUCCESS")) ? string.Empty : reader.GetString(reader.GetOrdinal("DB_MESSAGE"));
+                            dashboard.TotalIdeas = reader.IsDBNull(reader.GetOrdinal("IDEA_COUNT")) ? 0 : reader.GetInt32(reader.GetOrdinal("IDEA_COUNT"));
+                            dashboard.IdeasRejected = reader.IsDBNull(reader.GetOrdinal("REJECTED_IDEAS")) ? 0 : reader.GetInt32(reader.GetOrdinal("REJECTED_IDEAS"));
+                            dashboard.IdeasAccepted = reader.IsDBNull(reader.GetOrdinal("ACCEPTED_IDEAS")) ? 0 : reader.GetInt32(reader.GetOrdinal("ACCEPTED_IDEAS"));
+                            dashboard.IdeasPendingAction = reader.IsDBNull(reader.GetOrdinal("AWAITING_ACTION_IDEAS")) ? 0 : reader.GetInt32(reader.GetOrdinal("AWAITING_ACTION_IDEAS"));
+                            dashboard.IdeasInAction = reader.IsDBNull(reader.GetOrdinal("IN_ACTION_IDEAS")) ? 0 : reader.GetInt32(reader.GetOrdinal("IN_ACTION_IDEAS"));
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (_dbConnection.State == ConnectionState.Open)
+                {
+                    _dbConnection.Close();
+                }
+            }
+            return dashboard;
         }
 
         private InviteeList GetInviteeList(List<User> users)

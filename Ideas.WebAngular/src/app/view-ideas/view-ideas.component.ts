@@ -37,6 +37,7 @@ export class ViewIdeasComponent implements OnInit {
   commentsPopup: boolean = false;
   editCancel: boolean = false;
   noIdeaFound: boolean = false;
+  isCreateIdea: boolean = false;
 
   action: string;
   actionTitle: string;
@@ -46,6 +47,7 @@ export class ViewIdeasComponent implements OnInit {
   submitted = false;
   commentFormTItle = "Add";
   ideaFormTItle = "Add";
+  loading: boolean = true;
 
   //Roles to show icons
   isCreator: boolean = false;
@@ -81,6 +83,14 @@ export class ViewIdeasComponent implements OnInit {
 
   ngOnInit() {
     this.authId = sessionStorage.getItem(this.appGlobal.Author);
+    if (sessionStorage.getItem(this.appGlobal.Role).indexOf(this.appGlobal.Creator) != -1
+      && (this.section == this.appGlobal.viewIdeaSection || this.section == this.appGlobal.myIdeaSection)
+    ) {
+      this.isCreateIdea = true;
+    }
+    else {
+      this.isCreateIdea = false;
+    }
     //Initialize common form
     this.actionForm = this.formBuilder.group({
       comments: ['', [Validators.required, Validators.maxLength(4000), Validators.minLength(5)]],
@@ -126,6 +136,7 @@ export class ViewIdeasComponent implements OnInit {
         }
       };
     });
+    this.loading = false;
   }
 
   get f() { return this.actionForm.controls; }
@@ -309,7 +320,6 @@ export class ViewIdeasComponent implements OnInit {
 
   //Open form from create/edit
   openEditActionPopup(action: string) {
-    debugger
     if (action == this.appGlobal.Idea_New) {
       this.ideaDetailsForm = new Idea();
     }

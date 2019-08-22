@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Sendgrid" Version="9.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Ideas.Data\Ideas.Data.csproj" />
     <ProjectReference Include="..\Ideas.Models\Ideas.Models.csproj" />
   </ItemGroup>

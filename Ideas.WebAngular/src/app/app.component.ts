@@ -4,6 +4,8 @@ import { AppGlobal } from './config/appglobal';
 import { IdeasapiService } from './services/ideasapi.service';
 import { User, SignInResponse } from './idea';
 import { debug } from 'util';
+import { debounce } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +14,13 @@ import { debug } from 'util';
 })
 export class AppComponent {
   title = 'Ideas Creator';
-  showHtml: boolean = true;
+  showHtml: boolean = false;
   IsApprover: boolean = false;
   IsCreator: boolean = false;
+  loading: boolean = true;
   
-  constructor(private adalSvc: MsAdalAngular6Service, private appGlobal: AppGlobal, private apiService: IdeasapiService, private signInReponse: SignInResponse) {
+  constructor(private adalSvc: MsAdalAngular6Service, private appGlobal: AppGlobal, private apiService: IdeasapiService, private signInReponse: SignInResponse, private spinner: NgxSpinnerService) {
+    spinner.show();
     var token = this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
       sessionStorage.setItem(this.appGlobal.AccessToken, token);
       this.apiService.SignIn().subscribe(res => {
@@ -37,6 +41,8 @@ export class AppComponent {
             this.IsCreator = true;
           }
           sessionStorage.setItem(this.appGlobal.Author, this.signInReponse.author);
+          spinner.hide();
+          this.loading = false;
         }
       });
     });

@@ -86,4 +86,15 @@ namespace Ideas.Models
         public string Author { get; set; }
         public string Role { get; set; }
     }
+
+    public class DashboardResponse : Response
+    {
+        public DashboardResponse(bool isSuccess, string message, Dashboard dashboard) : base(isSuccess, message)
+        {
+            base.IsSuccess = isSuccess;
+            base.Message = message;
+            Dashboard = dashboard;
+        }
+        public Dashboard Dashboard { get; set; }
+    }
 }

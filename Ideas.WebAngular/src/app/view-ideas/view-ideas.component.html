@@ -6,31 +6,36 @@
   <div class="container">
     <div class="row">
       <div class="pull-left"><h4>{{title}}</h4></div>
-      <div class="pull-right span1 sortSelect" *ngIf="!noIdeaFound">
-        <select [(ngModel)]="sortOrder" (change)="OnSortChange()">
-          <option value="ASC">ASC</option>
-          <option value="DESC">DESC</option>
-        </select>
+    </div>
+    <div class="row">
+      <div class="pull-right">
+        <div class="span1 sortSelect" *ngIf="!noIdeaFound">
+          <span>Sort By:</span>
+        </div>
+        <div class="span2 sortSelect" *ngIf="!noIdeaFound">
+          <select [(ngModel)]="orderBy" (change)="OnSortChange()">
+            <option value="CREATED_DATE">Created Date</option>
+            <option value="TITLE">Idea Title</option>
+            <option value="CURRENT_STATUS">Idea Status</option>
+            <option value="CREATOR">Idea Creator</option>
+            <option value="WATCH_COUNT">Idea Watch Count</option>
+            <option value="COMMENT_COUNT">Idea Comment Count</option>
+            <option value="IDEA_TYPE">Idea Type</option>
+          </select>
+        </div>
+        <div class="span1 sortSelect" *ngIf="!noIdeaFound">
+          <select [(ngModel)]="sortOrder" (change)="OnSortChange()">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+          </select>
+        </div>
       </div>
-      <div class="pull-right span2 sortSelect" *ngIf="!noIdeaFound">
-        <select [(ngModel)]="orderBy" (change)="OnSortChange()">
-          <option value="CREATED_DATE">Created Date</option>
-          <option value="TITLE">Idea Title</option>
-          <option value="CURRENT_STATUS">Idea Status</option>
-          <option value="CREATOR">Idea Creator</option>
-          <option value="WATCH_COUNT">Idea Watch Count</option>
-          <option value="COMMENT_COUNT">Idea Comment Count</option>
-          <option value="IDEA_TYPE">Idea Type</option>
-        </select>
-      </div>
-      <div class="pull-right span1 sortSelect" *ngIf="!noIdeaFound">
-        <span>Sort By:</span>
-      </div>
-      <div class="pull-right span2 sortSelect" *ngIf="!noIdeaFound">
-        <button type="button" (click)="openEditActionPopup(appGlobal.Idea_New)" class="btn btn-theme">Create Idea</button>
+      <div class="pull-left span2 sortSelect" *ngIf="!noIdeaFound">
+        <button type="button" *ngIf="isCreateIdea" (click)="openEditActionPopup(appGlobal.Idea_New)" class="btn btn-theme">
+          <i class="fa fa-lightbulb"></i> Create Idea
+        </button>
       </div>
     </div>
-
     <!-- Four columns -->
     <div class="row" id="infinite-scroller">
       <div *ngIf="noIdeaFound" class="animated-fast flyIn span6 noideafound">

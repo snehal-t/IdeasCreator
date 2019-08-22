@@ -51,6 +51,22 @@ namespace Ideas.API.Controllers
             }
         }
 
+        [Route("api/GetDashboard")]
+        [HttpPost]
+        public ActionResult<DashboardResponse> GetDashboard(Request request)
+        {
+            try
+            {
+                var user = GetCurrentUser();
+                return _iIdeas.GetDashboard(user.Name, request.Author, user.Email);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                return new DashboardResponse(false, ex.ToString(), null);
+            }
+        }
+
         [Route("api/CreateIdea")]
         [HttpPost]
         public ActionResult<Response> CreateIdea([FromBody]Request request)
@@ -58,7 +74,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.CreateIdea(request.Idea, user.Email, request.Author);
+                return _iIdeas.CreateIdea(user.Name, request.Idea, user.Email, request.Author);
             }
             catch (Exception ex)
             {
@@ -74,7 +90,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.UpdateIdea(request.Idea, user.Email, request.Author);
+                return _iIdeas.UpdateIdea(user.Name, request.Idea, user.Email, request.Author);
             }
             catch (Exception ex)
             {
@@ -90,7 +106,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.WithdrawIdea(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.WithdrawIdea(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -106,7 +122,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.ApproveIdea(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.ApproveIdea(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -122,7 +138,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.RejectIdea(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.RejectIdea(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -138,7 +154,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.DeligateIdea(request.IdeaId, request.Assignee, request.Comments, user.Email, request.Author);
+                return _iIdeas.DeligateIdea(user.Name, request.IdeaId, request.Assignee, request.Comments, user.Email, request.Author);
             }
             catch (Exception ex)
             {
@@ -154,7 +170,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdea(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdea(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -170,7 +186,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdeaDone(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdeaDone(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -186,7 +202,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdeaGiveUp(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdeaGiveUp(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -202,7 +218,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdeaRework(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdeaRework(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -218,7 +234,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdeaAccept(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdeaAccept(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -234,7 +250,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.PickIdeaReopen(request.IdeaId, user.Email, request.Author, request.Comments);
+                return _iIdeas.PickIdeaReopen(user.Name, request.IdeaId, user.Email, request.Author, request.Comments);
             }
             catch (Exception ex)
             {
@@ -250,7 +266,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.WatchIdea(request.IdeaId, user.Email, request.Author, request.IsWatching);
+                return _iIdeas.WatchIdea(user.Name, request.IdeaId, user.Email, request.Author, request.IsWatching);
             }
             catch (Exception ex)
             {
@@ -266,7 +282,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.CommentIdea(request.IdeaId, user.Email, request.Author, request.CommentType, request.CommentParentId, request.Comments);
+                return _iIdeas.CommentIdea(user.Name, request.IdeaId, user.Email, request.Author, request.CommentType, request.CommentParentId, request.Comments);
             }
             catch (Exception ex)
             {
@@ -282,7 +298,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.EditComment(request.IdeaId, request.commentId, user.Email, request.Author, request.CommentType, request.CommentParentId, request.Comments);
+                return _iIdeas.EditComment(user.Name, request.IdeaId, request.commentId, user.Email, request.Author, request.CommentType, request.CommentParentId, request.Comments);
             }
             catch (Exception ex)
             {
@@ -298,7 +314,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.DeleteComment(request.IdeaId, request.commentId, user.Email, request.Author);
+                return _iIdeas.DeleteComment(user.Name, request.IdeaId, request.commentId, user.Email, request.Author);
             }
             catch (Exception ex)
             {
@@ -314,7 +330,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.GetIdeas(user.Email, request.Author,request.IdeaPage, request.PageSize, request.CurrentPage, request.OrderBy, request.order);
+                return _iIdeas.GetIdeas(user.Name, user.Email, request.Author,request.IdeaPage, request.PageSize, request.CurrentPage, request.OrderBy, request.order);
             }
             catch (Exception ex)
             {
@@ -330,7 +346,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.GetIdeaWatchers(user.Email, request.Author, request.IdeaId);
+                return _iIdeas.GetIdeaWatchers(user.Name, user.Email, request.Author, request.IdeaId);
             }
             catch (Exception ex)
             {
@@ -346,7 +362,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.GetIdeaComments(request.IdeaId, user.Email, request.Author, request.PageSize, request.CurrentPage);
+                return _iIdeas.GetIdeaComments(user.Name, request.IdeaId, user.Email, request.Author, request.PageSize, request.CurrentPage);
             }
             catch (Exception ex)
             {
@@ -362,7 +378,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.GetAlerts(user.Email, request.Author, request.PageSize, request.CurrentPage);
+                return _iIdeas.GetAlerts(user.Name, user.Email, request.Author, request.PageSize, request.CurrentPage);
             }
             catch (Exception ex)
             {
@@ -378,7 +394,7 @@ namespace Ideas.API.Controllers
             try
             {
                 var user = GetCurrentUser();
-                return _iIdeas.GetIdeaDetails(user.Email, request.Author, request.IdeaId);
+                return _iIdeas.GetIdeaDetails(user.Name, user.Email, request.Author, request.IdeaId);
             }
             catch (Exception ex)
             {
