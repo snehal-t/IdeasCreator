@@ -154,11 +154,11 @@
         <button type="button" *ngIf="(isApprover || isDelegator) && isReject" (click)="openCommentPopup(appGlobal.Idea_Reject)" class="btn btn-theme"><i class='fas fa-times-circle'></i> Reject</button>
         <button type="button" *ngIf="(isApprover || isDelegator) && isDelegate" (click)="openCommentPopup(appGlobal.Idea_Delegate)" class="btn btn-theme"><i class='fas fa-share'></i> Delegate</button>
         <button type="button" *ngIf="isPick" (click)="openCommentPopup(appGlobal.Idea_Pick)" class="btn btn-theme"><i class='fas fa-crosshairs'></i> Pick</button>
-        <button type="button" *ngIf="isPicker && isDone" (click)="openCommentPopup(appGlobal.Idea_Done)" class="btn btn-theme"><i class='fas fa-clipboard-check'></i> Idea Implemented</button>
+        <button type="button" *ngIf="isPicker && isDone" (click)="openCommentPopup(appGlobal.Idea_Done)" class="btn btn-theme"><i class='fas fa-clipboard-check'></i>Implemented</button>
         <button type="button" *ngIf="isPicker && isGiveUp" (click)="openCommentPopup(appGlobal.Idea_GiveUp)" class="btn btn-theme"><i class='fas fa-undo'></i> Give up</button>
-        <button type="button" *ngIf="isCreator && isRework" (click)="openCommentPopup(appGlobal.Idea_Rework)" class="btn btn-theme"><i class='fas fa-retweet'></i> Rework on Idea</button>
-        <button type="button" *ngIf="isCreator && isAccept" (click)="openCommentPopup(appGlobal.Idea_Accept)" class="btn btn-theme"><i class='fas fa-edit'></i> Accept Idea Implemented</button>
-        <button type="button" *ngIf="(isApprover || isDelegator) && (isDone || isGiveUp || isRework)" (click)="openCommentPopup(appGlobal.Idea_Reopen)" class="btn btn-theme"><i class='fas fa-edit'></i> Re-open Idea</button>
+        <button type="button" *ngIf="isCreator && isRework" (click)="openCommentPopup(appGlobal.Idea_Rework)" class="btn btn-theme"><i class='fas fa-retweet'></i> Rework</button>
+        <button type="button" *ngIf="isCreator && isAccept" (click)="openCommentPopup(appGlobal.Idea_Accept)" class="btn btn-theme"><i class='fas fa-thumbs-up'></i> Accept</button>
+        <button type="button" *ngIf="(isApprover || isDelegator) && (isDone || isGiveUp || isRework)" (click)="openCommentPopup(appGlobal.Idea_Reopen)" class="btn btn-theme"><i class='fas fa-recycle'></i> Re-open</button>
         <button type="button" *ngIf="isWatch" (click)="openWatcherPopup(appGlobal.Idea_Get_Watchers)" class="btn btn-theme"><i class='fas fa-eye'></i> Watchers</button>
         <button type="button" *ngIf="isComment" (click)="openCommentsPopup(appGlobal.Idea_Get_Comments)" class="btn btn-theme"><i class='fas fa-comment-dots'></i> Comments</button>
       </div>

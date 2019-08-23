@@ -53,8 +53,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.CreateIdea, name, "", idea.Title));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.CreateIdea, name, "", idea.Title);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -65,8 +65,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.UpdateIdea, name, "", idea.Title));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.UpdateIdea, name, "", idea.Title);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -76,8 +76,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.WithdrawIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.WithdrawIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -87,8 +87,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.ApproveIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.ApproveIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -98,8 +98,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.RejectIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.RejectIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -109,8 +109,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.DeligateIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.DeligateIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -120,8 +120,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -131,8 +131,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdeaDone, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdeaDone, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -142,8 +142,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdeaGiveUp, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdeaGiveUp, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -153,8 +153,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdeaRework, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdeaRework, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -164,8 +164,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdeaAccept, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdeaAccept, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -175,8 +175,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.PickIdeaReopen, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.PickIdeaReopen, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -190,8 +190,8 @@ namespace Ideas.Services.Services.Imp
             if (inviteeList.IsSuccess)
             {
                 _email = email; _author=author;
-                Task t = new Task(() => SendNotifications(inviteeList, NotificationType.CommentIdea, name, userComments, ideaId));
-                t.Start();
+                SendNotifications(inviteeList, NotificationType.CommentIdea, name, userComments, ideaId);
+                
             }
             return new Response(inviteeList.IsSuccess, inviteeList.Message);
         }
@@ -357,7 +357,7 @@ namespace Ideas.Services.Services.Imp
                 template.UserComment = comments;
                 template.IdeaTitle = ideaName;
                 Services.EmailService.EmailService emailService = new EmailService.EmailService();
-                if (template.receiver.Name == "Snehal Thube")
+                if (template.receiver.Name == "Snehal Thube" || template.receiver.Name == "Sivakumar Subramaniam" || template.receiver.Name == "Mukesh K Khankari" || template.receiver.Name == "Archit Dutt Sharma")
                 {
                     emailService.SendNotifications(template);
                 }

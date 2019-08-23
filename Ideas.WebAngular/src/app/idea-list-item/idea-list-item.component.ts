@@ -439,6 +439,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     this.ideaService.PickIdea(this.request).subscribe(res => {
       if (res.isSuccess) {
         this.idea.ideaStatus = this.appGlobal.Idea_Pick;
+        this.isPicker = true;
         if (!this.idea.isChild) {
           this.parentOpenIdeaDetails();
         }
@@ -461,6 +462,7 @@ export class IdeaListItemComponent implements OnInit, OnDestroy {
     this.ideaService.PickIdeaDone(this.request).subscribe(res => {
       if (res.isSuccess) {
         this.idea.ideaStatus = this.appGlobal.Idea_Done;
+        this.isPicker = true;
         if (!this.idea.isChild) {
           this.parentOpenIdeaDetails();
         }

@@ -63,8 +63,8 @@ namespace Ideas.Data.Repositories.Ideas.Imp
                 sqlCommand.Parameters.Add(new SqlParameter("ETA", idea.IdealTime));
                 sqlCommand.Parameters.Add(new SqlParameter("ETA_JUSTIFICATION", idea.BusinessJustification));
                 sqlCommand.Parameters.Add(new SqlParameter("CONTACT_PERSON", idea.ContactName));
-                sqlCommand.Parameters.Add(new SqlParameter("CONTACT_NUMBER", idea.ContactEmail));
-                sqlCommand.Parameters.Add(new SqlParameter("CONTACT_EMAIL", idea.ContactMobileNo));
+                sqlCommand.Parameters.Add(new SqlParameter("CONTACT_NUMBER", idea.ContactMobileNo));
+                sqlCommand.Parameters.Add(new SqlParameter("CONTACT_EMAIL", idea.ContactEmail));
                 sqlCommand.Parameters.Add(new SqlParameter("CREATED_BY", author));
                 sqlCommand.Parameters.Add(new SqlParameter("QDEA_USER_ID", email));
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())

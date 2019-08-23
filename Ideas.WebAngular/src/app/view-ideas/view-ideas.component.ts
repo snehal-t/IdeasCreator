@@ -212,6 +212,7 @@ export class ViewIdeasComponent implements OnInit {
           this.ideaForm.reset();
           this.ideaSubmitted = false;
           this.editPopup = false;
+          this.refreshList(new Idea());
           this.spinner.hide();
           this.toastr.success(res.message, this.appGlobal.Success)
         }
@@ -382,6 +383,8 @@ export class ViewIdeasComponent implements OnInit {
     this.alignIcons();
     this.setIconsAsPerStatus();
     this.ref.detectChanges();
+    var d = $('.modal-body');
+    d.scrollTop(d.prop("scrollHeight"));
   }
 
   //Open comments popup

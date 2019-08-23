@@ -7,11 +7,11 @@
       <a title="Reject" *ngIf="(isApprover || isDelegator) && isReject" (click)="parentOpenIdeaAction(appGlobal.Idea_Reject)"><i class='fas fa-times-circle'></i></a>
       <a title="Delegate" *ngIf="(isApprover || isDelegator) && isDelegate" (click)="parentOpenIdeaAction(appGlobal.Idea_Delegate)"><i class='fas fa-share'></i></a>
       <a title="Pick" *ngIf="isPick" (click)="parentOpenIdeaAction(appGlobal.Idea_Pick)"><i class='fas fa-crosshairs'></i></a>
-      <a title="Idea Implemented" *ngIf="isPicker && isDone" (click)="parentOpenIdeaAction(appGlobal.Idea_Done)"><i class='fas fa-clipboard-check'></i></a>
+      <a title="Implemented" *ngIf="isPicker && isDone" (click)="parentOpenIdeaAction(appGlobal.Idea_Done)"><i class='fas fa-clipboard-check'></i></a>
       <a title="Give up" *ngIf="isPicker && isGiveUp" (click)="parentOpenIdeaAction(appGlobal.Idea_GiveUp)"><i class='fas fa-undo'></i></a>
-      <a title="Rework on Idea" *ngIf="isCreator && isRework" (click)="parentOpenIdeaAction(appGlobal.Idea_Rework)"><i class='fas fa-retweet'></i></a>
-      <a title="Accept Idea Implemented" *ngIf="isCreator && isAccept" (click)="parentOpenIdeaAction(appGlobal.Idea_Accept)"><i class='fas fa-edit'></i></a>
-      <a title="Re-open Idea" *ngIf="(isApprover || isDelegator) && (isDone || isGiveUp || isRework)" (click)="parentOpenIdeaAction(appGlobal.Idea_Reopen)"><i class='fas fa-edit'></i></a>
+      <a title="Rework" *ngIf="isCreator && isRework" (click)="parentOpenIdeaAction(appGlobal.Idea_Rework)"><i class='fas fa-retweet'></i></a>
+      <a title="Accept" *ngIf="isCreator && isAccept" (click)="parentOpenIdeaAction(appGlobal.Idea_Accept)"><i class='fas fa-thumbs-up'></i></a>
+      <a title="Re-open" *ngIf="(isApprover || isDelegator) && (isDone || isGiveUp || isRework)" (click)="parentOpenIdeaAction(appGlobal.Idea_Reopen)"><i class='fas fa-recycle'></i></a>
       <a title="Watchers" *ngIf="isWatch" (click)="parentOpenWatcherAction()"><i class='fas fa-eye'></i></a>
       <a title="Comments" *ngIf="isComment" (click)="parentOpenCommentAction()"><i class='fas fa-comment-dots'></i></a>
     </div>
